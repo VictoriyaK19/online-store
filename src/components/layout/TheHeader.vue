@@ -1,12 +1,19 @@
 <template>
   <header>
     <nav>
-      <h1>Brand name</h1>
+      <router-link to="/"><h1>Brand name</h1></router-link>
       <ul>
-        <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/store">Store</router-link></li>
         <li><router-link to="/aboutus">About us</router-link></li>
         <li><router-link to="/faq">FAQ</router-link></li>
+      </ul>
+      <ul>
+        <li>
+          <router-link to="/"> <font-awesome-icon icon="cart-shopping" /></router-link>
+        </li>
+        <li>
+          <router-link to="/"> <font-awesome-icon icon="user" /></router-link>
+        </li>
       </ul>
     </nav>
   </header>
@@ -25,24 +32,26 @@ header a {
   text-decoration: none;
   color: #ffffff;
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 1.5rem;
   border: 1px solid transparent;
 }
 
-a:active,
-a:hover,
-a.router-link-active {
-  border: 1px solid #f391e3;
+ul a:active,
+ul a:hover,
+ul a.router-link-active {
+  border: 1px solid #e0e0e0;
+  border-radius: 30px;
 }
 
 h1 {
   margin: 0;
+  color: white;
 }
 
-h1 a {
+/* h1 a {
   color: white;
   margin: 0;
-}
+} */
 
 h1 a:hover,
 h1 a:active,
