@@ -10,9 +10,8 @@ import App from './App.vue'
 
 library.add(fas);
 
-const app = createApp(App);
+createApp(App)
 
-app.component('font-awesome-icon', FontAwesomeIcon)
-app.use(router);
-
-app.mount('#app')
+.component('font-awesome-icon', FontAwesomeIcon)
+.use(router)
+.mount('#app')

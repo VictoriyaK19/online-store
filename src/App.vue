@@ -3,14 +3,14 @@
 </template>
 
 <script>
-import TheHeader from './components/layout/TheHeader.vue';
+import TheHeader from "./components/layout/TheHeader.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    'the-header': TheHeader
-  }
-}
+    "the-header": TheHeader,
+  },
+};
 </script>
 
 <style>
@@ -22,13 +22,12 @@ export default {
 
 html {
   font-family: "Roboto", sans-serif;
-  background: linear-gradient(0.25turn, #004aad, #cb6ce6);
-
 }
 
 body {
-  margin: 0;
-
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background: linear-gradient(0.25turn, #004aad, #cb6ce6) fixed;
 }
 
 .route-enter-from {
@@ -50,5 +49,4 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
-
 </style>
