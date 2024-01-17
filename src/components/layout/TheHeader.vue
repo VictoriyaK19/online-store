@@ -9,10 +9,10 @@
       </ul>
       <ul>
         <li>
-          <router-link to="/"> <font-awesome-icon icon="cart-shopping" /></router-link>
+          <router-link to="/mycart"> <font-awesome-icon icon="cart-shopping" /></router-link>
         </li>
         <li>
-          <router-link to="/"> <font-awesome-icon icon="user" /></router-link>
+          <router-link to="/myprofile"> <font-awesome-icon icon="user" /></router-link>
         </li>
       </ul>
     </nav>

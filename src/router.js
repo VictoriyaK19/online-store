@@ -1,9 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
 import TheHome from "./pages/TheHome.vue";
-import NotFound from "./pages/NotFound.vue";
+
 import TheStore from "@/pages/TheStore";
 import FAQuestions from '@/pages/FAQuestions';
 import AboutUs from '@/pages/AboutUs';
+import MyProfile from "./pages/user/MyProfile.vue";
+import MyCart from "./pages/user/MyCart.vue";
+import NotFound from "./pages/NotFound.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -13,7 +16,8 @@ const router = createRouter({
       { path: "/store", component: TheStore },
       { path: "/abutus", component: AboutUs },
       { path: "/faq", component: FAQuestions },
-  
+      { path: "/myprofile", component: MyProfile },
+      { path: "/mycart", component: MyCart },
       { path: "/:notFound(.*)", component: NotFound },
     ],
   });
