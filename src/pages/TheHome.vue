@@ -23,7 +23,7 @@
 
 <style scoped>
 div {
-  flex: 1;
+  /* flex: 1; */
   position: relative;
   overflow: hidden;
   background: url("../../src/assets/Untitled_design-removebg-preview.png")
@@ -35,7 +35,7 @@ div {
 }
 
 section.header {
-  flex: 2;
+  flex: 1; 
   padding-left: 6vw;
   padding-top: 3vw;
   font-size: 6vw;
@@ -65,16 +65,16 @@ section.text p {
 }
 
 .buttons {
-  margin-top: 2vw; 
+  margin-top: 2vw;
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-end;
   margin-right: 4vw;
   z-index: 1;
 
 }
 
 button {
-  font-size: 1.5vw; 
+  font-size: 1.5vw;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 600;
   border: 2px solid #6c2eb7;
@@ -88,7 +88,7 @@ button.button1 {
 }
 button.button2 {
   margin-left: 1vw;
-  background-color: #fff; 
+  background-color: #fff;
   color: #6c2eb7;
 
 }
@@ -104,4 +104,109 @@ button.button2:hover {
   border: 2px solid #935dd5;
   color: #fff;
 }
+
+/* Media query for mobile devices */
+@media screen and (max-width: 667px) {
+  /* div {
+    flex-direction: column; /* Change flex direction to column for mobile */
+  /* }
+
+    section.text p {
+      font-size: 1.2vw; /* Adjust font size for smaller screens 
+      padding-right: 4vw;
+    }
+
+    .buttons {
+      margin-top: 1vw;
+      margin-right: 2vw;
+    }
+
+    button {
+      font-size: 3vw;
+      padding: 1vw 3vw;
+    } */ 
+    div {
+  /* flex: 1; */
+  position: relative;
+  overflow: hidden;
+  background: url("../../src/assets/Untitled_design-removebg-preview.png")
+    no-repeat;
+  background-size: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+
+}
+
+section.header {
+  flex: 1; 
+  padding-left: 12vw;
+  padding-top: 8vw;
+  font-size: 8vw;
+  line-height: 7vw;
+  color: #004aad;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 800;
+}
+
+/* section.header span {
+  display: block;
+} */
+
+section.text {
+  margin-top: 30vw;
+  padding: 7vw ;
+  flex: 2;
+  width: 100%;
+  text-align: center; /* Center text */
+}
+
+section.text p {
+  font-size: 4vw; /* Adjust font size as needed */
+  color: #6c2eb7; /* Adjust text color as needed */
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 500;
+  padding-top: 0;
+  padding-right: 0; 
+}
+
+.buttons {
+  margin-top: 2vw;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 0;
+}
+
+button {
+  font-size: 4vw;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 500;
+  border: 2px solid #6c2eb7;
+  border-radius: 30px;
+  padding: 0.8vw 2vw;
+}
+
+button.button1 {
+  background-color: #6c2eb7;
+  color: white;
+}
+button.button2 {
+  margin-left: 1vw;
+  background-color: #fff;
+  color: #6c2eb7;
+
+}
+
+button.button1:hover {
+  background-color: #935dd5;
+  border: 2px solid #935dd5;
+
+}
+
+button.button2:hover {
+  background-color: #935dd5;
+  border: 2px solid #935dd5;
+  color: #fff;
+}
+  }
 </style>
