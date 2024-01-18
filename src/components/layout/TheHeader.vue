@@ -1,6 +1,7 @@
 <template>
   <header>
     <nav>
+      
       <div :class="!isResponsive ? 'topnav' : 'topnav responsive'">
         <router-link to="/"><h1>Brand name</h1></router-link>
 
@@ -79,37 +80,6 @@ h1 {
   color: white;
 }
 
-/* 
-
-
-
-
-
- h1 a {
-  color: white;
-  margin: 0;
-} 
-
-h1 a:hover,
-h1 a:active,
-h1 a.router-link-active {
-  border-color: transparent;
-}
-
-
-
-header ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-li {
-  margin: 0 0.5rem;
-} */
 
 @media screen and (max-width: 667px) {
   .topnav a:not(:first-child) {

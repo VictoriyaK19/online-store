@@ -36,6 +36,7 @@ div.background {
   position: relative;
   overflow: hidden;
   background-color: white;
+  border-radius: 25px;
   margin: 20px; /* Adjust the margin size as needed */
   box-sizing: border-box;
   width: calc(100% - 40px); /* Subtract twice the margin size from 100% */
