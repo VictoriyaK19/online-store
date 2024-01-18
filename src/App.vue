@@ -1,6 +1,7 @@
 <template>
   <the-header></the-header>
   <router-view></router-view>
+
 </template>
 
 <script>
@@ -26,10 +27,19 @@ html {
 }
 
 body {
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   background: linear-gradient(0.25turn, #004aad, #cb6ce6) fixed;
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
+
+div.background {
+  overflow: hidden;
+  background-color: white;
+  margin: 20px; /* Adjust the margin size as needed */
+  box-sizing: border-box;
+  width: calc(100% - 40px); /* Subtract twice the margin size from 100% */
+  min-height: 80vh;
+  z-index: -1;
+} 
 
 .route-enter-from {
   opacity: 0;

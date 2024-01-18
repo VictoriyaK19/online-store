@@ -45,9 +45,6 @@ p {
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background: linear-gradient(0.25turn, #004aad, #cb6ce6) fixed;
 }
 header nav {
   width: 90%;
