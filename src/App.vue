@@ -32,6 +32,7 @@ body {
 }
 
 div.background {
+  position: relative;
   overflow: hidden;
   background-color: white;
   margin: 20px; /* Adjust the margin size as needed */
