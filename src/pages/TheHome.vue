@@ -1,17 +1,18 @@
 <template>
   <div class="background">
-    <h1>Home</h1>
+    <section class="header">
+      <span>Smart</span>
+      <span>Tech,</span>
+      <span>Pure</span>
+      <span>Delight</span>
+    </section>
+    <section class="text">
+        <p>At our online store, satisfaction isn't just a goal; it's a standard. Smart Tech, Pure Delight – because your journey into the future of technology should be nothing short of extraordinary. Welcome to a smarter, more delightful world of tech.</p>
+    </section>
   </div>
 </template>
 
 <style scoped>
-/* image {
-  max-width: 100%;
-  height: auto;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-} */
 div {
   position: relative;
   overflow: hidden;
@@ -19,5 +20,20 @@ div {
     no-repeat;
   background-size: 55%;
   min-height: 100vh;
+  display: flex;
+}
+
+section.header {
+  padding-left: 6vw;
+  padding-top: 3vw;
+  font-size: 6vw;
+  line-height: 5vw; 
+  color: #004aad;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 800;
+}
+
+section.header span {
+  display: block; 
 }
 </style>
