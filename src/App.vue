@@ -24,6 +24,7 @@ export default {
 
 html {
   font-family: "Roboto", sans-serif;
+
 }
 
 body {
@@ -39,7 +40,7 @@ div.background {
   box-sizing: border-box;
   width: calc(100% - 40px); /* Subtract twice the margin size from 100% */
   min-height: 80vh;
-  z-index: -1;
+
 } 
 
 .route-enter-from {

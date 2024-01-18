@@ -15,7 +15,7 @@
       </p>
       <section class="buttons">
         <button class="button1">Order Now</button>
-        <button class="button2">Learn more</button>
+        <button class="button2">Learn More</button>
       </section>
     </section>
   </div>
@@ -31,6 +31,7 @@ div {
   background-size: 55%;
   min-height: 100vh;
   display: flex;
+
 }
 
 section.header {
@@ -93,12 +94,14 @@ button.button2 {
 }
 
 button.button1:hover {
-  background-color: transparent;
-  color: #7a46ba;
+  background-color: #935dd5;
+  border: 2px solid #935dd5;
+
 }
 
 button.button2:hover {
-  background-color: #743eb6;
+  background-color: #935dd5;
+  border: 2px solid #935dd5;
   color: #fff;
 }
 </style>
