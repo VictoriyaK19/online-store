@@ -1,18 +1,25 @@
 <template>
   <header>
     <nav>
-      
       <div :class="!isResponsive ? 'topnav' : 'topnav responsive'">
-        <router-link to="/" class="left">Brand name</router-link>
-        <router-link to="/store" class="center1">Store</router-link>
-        <router-link to="/aboutus" class="center">About us</router-link>
-        <router-link to="/faq" class="center2">FAQ</router-link>
-        <router-link to="/mycart" class="right">
-          <font-awesome-icon icon="cart-shopping" />
-        </router-link>
-        <router-link to="/myprofile" class="right">
-          <font-awesome-icon icon="user" />
-        </router-link>
+        <div class="left">
+          <router-link to="/"><h1>Brand name</h1></router-link>
+        </div>
+        <!-- Second div centered -->
+        <div class="center">
+          <router-link to="/store">Store</router-link>
+          <router-link to="/aboutus">About us</router-link>
+          <router-link to="/faq">FAQ</router-link>
+        </div>
+        <!-- Third div on the right -->
+        <div class="right">
+          <router-link to="/mycart">
+            <font-awesome-icon icon="cart-shopping" />
+          </router-link>
+          <router-link to="/myprofile">
+            <font-awesome-icon icon="user" />
+          </router-link>
+        </div>
         <font-awesome-icon class="bars" icon="bars" @click="changeStyle" />
       </div>
     </nav>
@@ -35,117 +42,94 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  margin: 0;
-  color: white;
-}
-
-h2,
-p {
-  color: white;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 header nav {
-  padding-top: 1rem;
-  width: 90%;
   margin: auto;
-  display: flex;
+  width: 90%;
+
   justify-content: space-between;
   align-items: center;
 }
-
-.topnav {
-  overflow: hidden;
-}
-
-.topnav a {
+header div {
+  list-style: none;
   margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  margin: 0;
+  color: white;
+  text-align: left;
+}
+header a {
   text-decoration: none;
   color: #ffffff;
   display: inline-block;
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   border: 1px solid transparent;
 }
-
-.topnav a:hover {
-  font-weight: bold;
-}
-
 .topnav .bars {
   display: none;
+  justify-content: space-between;
 }
 
-.topnav router-link {
-  text-decoration: none;
-  color: #ffffff;
+.left, .center, .right {
   display: flex;
   align-items: center;
-  padding: 1rem;
 }
 
-.topnav .left {
-  margin-right: auto;
-  font-size: 25px;
-  font-weight: bold;
-}
-.topnav .center1 {
-  margin: 0 0vw 0 17vw;
+.left {
+  width: 10%;
+  flex-grow: 1; /* Takes up remaining space */
 
 }
-.topnav .center {
-  margin: 0 3vw;
+
+
+.center {
+  width: 35%;
+  flex-grow: 2; /* Takes up twice as much space as the others */
+  justify-content: center;
 }
 
-.topnav .center2 {
-  margin: 0 20vw 0 0;
+.right {
+  width: 15%;
+
+  flex-grow: 1; /* Takes up remaining space */
+  justify-content: flex-end; /* Align items to the right */
 }
 
-.topnav .right {
-  margin-left: 2vw;
-}
 
-@media screen and (max-width: 667px) {
-  .topnav a:not(:first-child) {
+  @media screen and (max-width: 667px) {
+
+    .left a{
+      width: 100%;
+    }
+  .topnav div:not(:first-child) {
     display: none;
   }
-
   .topnav .bars {
+    float: right;
     display: block;
     text-decoration: none;
     color: #ffffff;
     padding: 1.5rem 1.5rem;
-    position: absolute;
-    right: 20px;
-    top: 20px;
   }
-
+}
+@media screen and (max-width: 667px) {
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .bars {
-    display: block;
-    text-decoration: none;
-    color: #ffffff;
-    padding: 1.5rem 1.5rem;
     position: absolute;
-    right: 20px;
-    top: 20px;
+    right: 0;
+    top: 0;
   }
-
   .topnav.responsive a {
     float: none;
     display: block;
     text-align: left;
   }
-  .topnav .center1,
-  .topnav .center,
-  .topnav .center2,
-  .topnav .right   {
-  margin: 0;
 }
-}
-
 
 </style>

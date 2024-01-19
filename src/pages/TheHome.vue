@@ -23,7 +23,6 @@
 
 <style scoped>
 div {
-  /* flex: 1; */
   position: relative;
   overflow: hidden;
   background: url("../../src/assets/Untitled_design-removebg-preview.png")
