@@ -3,20 +3,16 @@
     <nav>
       
       <div :class="!isResponsive ? 'topnav' : 'topnav responsive'">
-        <router-link to="/"><h1>Brand name</h1></router-link>
-
-        <router-link to="/store">Store</router-link>
-        <router-link to="/aboutus">About us</router-link>
-        <router-link to="/faq">FAQ</router-link>
-
-        <router-link to="/mycart">
-          <font-awesome-icon icon="cart-shopping"
-        /></router-link>
-
-        <router-link to="/myprofile">
-          <font-awesome-icon icon="user"
-        /></router-link>
-
+        <router-link to="/" class="left">Brand name</router-link>
+        <router-link to="/store" class="center">Store</router-link>
+        <router-link to="/aboutus" class="center">About us</router-link>
+        <router-link to="/faq" class="center2">FAQ</router-link>
+        <router-link to="/mycart" class="right">
+          <font-awesome-icon icon="cart-shopping" />
+        </router-link>
+        <router-link to="/myprofile" class="right">
+          <font-awesome-icon icon="user" />
+        </router-link>
         <font-awesome-icon class="bars" icon="bars" @click="changeStyle" />
       </div>
     </nav>
@@ -39,6 +35,10 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  margin: 0;
+  color: white;
+}
 h2,
 p {
   color: white;
@@ -48,22 +48,21 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 header nav {
+  padding-top: 1rem;
   width: 90%;
   margin: auto;
-  justify-content: space-between;
-  align-items: center;
 }
 .topnav {
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .topnav a {
-  margin: 0 ;
   text-decoration: none;
   color: #ffffff;
   display: inline-block;
-  padding: 1rem 1.5rem;
-  border: 1px solid transparent;
 
 }
 
@@ -75,9 +74,28 @@ header nav {
   display: none;
 }
 
-h1 {
-  margin: 0;
-  color: white;
+.topnav router-link {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.left {
+  margin-right: auto;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.center {
+  margin: 0 3rem;
+}
+.center2 {
+  margin: 0 29vw 0 3rem ;
+}
+.right {
+  margin-left: 2rem;
 }
 
 
