@@ -5,13 +5,11 @@
         <div class="left">
           <router-link to="/"><h1>Brand name</h1></router-link>
         </div>
-        <!-- Second div centered -->
         <div class="center">
           <router-link to="/store">Store</router-link>
-          <router-link to="/aboutus">About us</router-link>
+          <router-link to="/aboutus">About<span>&nbsp;</span>us</router-link>
           <router-link to="/faq">FAQ</router-link>
         </div>
-        <!-- Third div on the right -->
         <div class="right">
           <router-link to="/mycart">
             <font-awesome-icon icon="cart-shopping" />
@@ -19,6 +17,13 @@
           <router-link to="/myprofile">
             <font-awesome-icon icon="user" />
           </router-link>
+        </div>
+        <div :class="!isResponsive ? 'list' : 'list topnav responsive'">
+          <router-link to="/store">Store</router-link>
+          <router-link to="/aboutus">About us</router-link>
+          <router-link to="/faq">FAQ</router-link>
+          <router-link to="/mycart">My Cart</router-link>
+          <router-link to="/my profile">My profile</router-link>
         </div>
         <font-awesome-icon class="bars" icon="bars" @click="changeStyle" />
       </div>
@@ -45,13 +50,11 @@ export default {
 header nav {
   margin: auto;
   width: 90%;
-
-  justify-content: space-between;
   align-items: center;
 }
 header div {
   list-style: none;
-  margin: 0;
+  margin: 0.5rem 0 0 0;
   padding: 0;
   display: flex;
   justify-content: center;
@@ -73,38 +76,36 @@ header a {
   display: none;
   justify-content: space-between;
 }
+.list a {
+  display: none;
+}
 
-.left, .center, .right {
+.left,
+.center,
+.right {
   display: flex;
   align-items: center;
 }
 
 .left {
-  width: 10%;
+  width: 30%;
   flex-grow: 1; /* Takes up remaining space */
-
+  justify-content: flex-start;
 }
 
-
 .center {
-  width: 35%;
+  width: 33%;
   flex-grow: 2; /* Takes up twice as much space as the others */
   justify-content: center;
 }
 
 .right {
-  width: 15%;
-
+  width: 33%;
   flex-grow: 1; /* Takes up remaining space */
   justify-content: flex-end; /* Align items to the right */
 }
 
-
-  @media screen and (max-width: 667px) {
-
-    .left a{
-      width: 100%;
-    }
+@media screen and (max-width: 722px) {
   .topnav div:not(:first-child) {
     display: none;
   }
@@ -116,7 +117,8 @@ header a {
     padding: 1.5rem 1.5rem;
   }
 }
-@media screen and (max-width: 667px) {
+@media screen and (max-width: 722px) {
+
   .topnav.responsive {
     position: relative;
   }
@@ -131,5 +133,4 @@ header a {
     text-align: left;
   }
 }
-
 </style>

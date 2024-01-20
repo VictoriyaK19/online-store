@@ -101,7 +101,7 @@ button.button2:hover {
 }
 
 /* Media query for mobile devices */
-@media screen and (max-width: 667px) {
+@media screen and (max-width: 722px) {
   div {
     background-size: 100%;
     flex-flow: column wrap;
