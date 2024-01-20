@@ -18,14 +18,15 @@
             <font-awesome-icon icon="user" />
           </router-link>
         </div>
-        <div :class="!isResponsive ? 'list' : 'list topnav responsive'">
+        
+        <font-awesome-icon class="bars" icon="bars" @click="changeStyle" />
+        <div v-if="isResponsive" class="list">
           <router-link to="/store">Store</router-link>
           <router-link to="/aboutus">About us</router-link>
           <router-link to="/faq">FAQ</router-link>
           <router-link to="/mycart">My Cart</router-link>
           <router-link to="/my profile">My profile</router-link>
         </div>
-        <font-awesome-icon class="bars" icon="bars" @click="changeStyle" />
       </div>
     </nav>
   </header>
@@ -76,9 +77,6 @@ header a {
   display: none;
   justify-content: space-between;
 }
-.list a {
-  display: none;
-}
 
 .left,
 .center,
@@ -104,9 +102,17 @@ header a {
   flex-grow: 1; /* Takes up remaining space */
   justify-content: flex-end; /* Align items to the right */
 }
+.list, .bars {
+  display: none;
+}
 
-@media screen and (max-width: 722px) {
-  .topnav div:not(:first-child) {
+
+@media screen and (max-width: 667px) {
+  .left {
+    width: 100%;
+    }
+  .center,
+.right {
     display: none;
   }
   .topnav .bars {
@@ -115,12 +121,19 @@ header a {
     text-decoration: none;
     color: #ffffff;
     padding: 1.5rem 1.5rem;
-  }
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 1rem;
+  } 
 }
-@media screen and (max-width: 722px) {
-
+@media screen and (max-width: 667px) {
+  header div {
+    display: inline-block;
+  }
   .topnav.responsive {
-    position: relative;
+    /* position: relative; */
+    
   }
   .topnav.responsive .bars {
     position: absolute;
@@ -131,6 +144,20 @@ header a {
     float: none;
     display: block;
     text-align: left;
+  }
+  .list {
+    display: block;
+  }
+  .list a{
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .center,
+  .right {
+    display: none;
+
   }
 }
 </style>
