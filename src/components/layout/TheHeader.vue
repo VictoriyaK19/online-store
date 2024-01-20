@@ -124,7 +124,7 @@ header a {
     position: absolute;
     right: 0;
     top: 0;
-    margin: 1rem;
+    margin: 1.3rem 1.5rem;
   } 
 }
 @media screen and (max-width: 667px) {
