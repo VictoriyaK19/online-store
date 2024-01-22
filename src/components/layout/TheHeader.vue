@@ -25,7 +25,7 @@
           <router-link to="/aboutus">About us</router-link>
           <router-link to="/faq">FAQ</router-link>
           <router-link to="/mycart">My Cart</router-link>
-          <router-link to="/my profile">My profile</router-link>
+          <router-link to="/myprofile">My profile</router-link>
         </div>
       </div>
     </nav>

@@ -14,8 +14,10 @@
         smarter, more delightful world of tech.
       </p>
       <section class="buttons">
-        <button class="button1">Order Now</button>
-        <button class="button2">Learn More</button>
+        <button class="button1">
+          <router-link to="/store">Order Now</router-link>
+        </button>
+        <button class="button2"><router-link to="/aboutus">Learn More</router-link></button>
       </section>
     </section>
   </div>
@@ -81,12 +83,19 @@ button {
 
 button.button1 {
   background-color: #6c2eb7;
+}
+button.button1 a {
+  text-decoration: none;
   color: white;
 }
 button.button2 {
   margin-left: 1vw;
   background-color: #fff;
+}
+button.button2 a {
+  text-decoration: none;
   color: #6c2eb7;
+
 }
 
 button.button1:hover {
@@ -133,12 +142,11 @@ button.button2:hover {
     margin-top: 2vw;
     margin-right: 0;
     justify-content: center; /* Center the buttons */
-
   }
 
   button {
     font-size: 4vw;
-    padding: 0.8vw 2vw;
+    padding: 2vw 4vw
   }
 }
 </style>
