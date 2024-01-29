@@ -106,7 +106,6 @@ h1 {
 }
 
 .answer {
-  display: none;
   padding-left: 20px;
   border-left: 2px solid #007bff;
 }
