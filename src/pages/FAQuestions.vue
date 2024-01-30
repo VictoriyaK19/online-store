@@ -17,7 +17,7 @@ export default {
         {
           question: "What makes [Your Online Store Name] unique?",
           answer: "At [Your Online Store Name], we pride ourselves on offering a curated selection of cutting-edge tech products coupled with unparalleled customer service.",
-          showAnswer: false
+          showAnswer: true
         },
         {
           question: "How can I contact customer support?",
