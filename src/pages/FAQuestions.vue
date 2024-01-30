@@ -85,9 +85,13 @@ export default {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+
 h1 {
+  margin-top: 0.5rem;
   text-align: center;
-  color: #333;
+  background: -webkit-linear-gradient(0.8turn, #004aad, #cb6ce6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .faq-item {
