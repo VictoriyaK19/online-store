@@ -88,6 +88,7 @@ export default {
 
 h1 {
   margin-top: 0.5rem;
+  margin-bottom: 2rem;
   text-align: center;
   background: -webkit-linear-gradient(0.8turn, #004aad, #cb6ce6);
   -webkit-background-clip: text;
@@ -95,13 +96,15 @@ h1 {
 }
 
 .faq-item {
+  padding-top: 0.5rem;
   margin-bottom: 20px;
 }
 
 .question {
   cursor: pointer;
   font-size: 18px;
-  color: #333;
+  font-weight: bold;
+  color: #004aad;
   border: none;
   background: none;
   outline: none;
@@ -111,7 +114,7 @@ h1 {
 
 .answer {
   padding-left: 20px;
-  border-left: 2px solid #007bff;
+  border-left: 2px solid #004aad;
 }
 
 @media screen and (max-width: 600px) {
