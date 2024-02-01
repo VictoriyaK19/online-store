@@ -1,6 +1,7 @@
 <template>
   <div class="background">
-    <div>
+    <div class="content">
+      
       <p>
         "Welcome to [Your Online Store Name], Where Tech Meets Innovation At
         [Your Online Store Name], we're not just about selling products; we're
@@ -28,3 +29,30 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+  .background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .content {
+    max-width: 800px;
+    text-align: center;
+  }
+
+  p {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #03459a;
+  }
+
+  @media screen and (max-width: 768px) {
+    .content {
+      padding: 0 20px;
+    }
+  }
+</style>
