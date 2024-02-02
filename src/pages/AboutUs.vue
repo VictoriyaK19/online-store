@@ -1,7 +1,11 @@
 <template>
   <div class="background">
+    <div class="images">
+      <img src="../assets/about_us/tech.jpg" alt="" />
+      <img src="../assets/about_us/tech2.jpg" alt="" />
+      <img src="../assets/about_us/tech3.jpg" alt="" />
+    </div>
     <div class="content">
-      
       <p>
         "Welcome to [Your Online Store Name], Where Tech Meets Innovation At
         [Your Online Store Name], we're not just about selling products; we're
@@ -34,8 +38,30 @@
   .background {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Align items flex-start to prevent the images from stretching the container */
     padding: 20px;
+    position: relative; /* Set position relative for the background container */
+  }
+
+  .images {
+    margin: 2rem;
+    width: 18rem; /* Set a specific width for the images container */
+    position: absolute; /* Set position absolute for the images container */
+    top: 0; /* Position from the top edge of the background container */
+    left: 0; /* Position from the left edge of the background container */
+    padding-right: 20px; /* Add some padding to the right to create space for the images */
+  }
+
+  .images img {
+    width: 100%; /* Make images fill their container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: transform 0.3s ease; /* Add transition for smooth hover effect */
+  }
+
+  .images img:hover {
+    transform: scale(1.05); /* Add a slight scale effect on hover */
   }
 
   .content {
@@ -56,3 +82,4 @@
     }
   }
 </style>
+
