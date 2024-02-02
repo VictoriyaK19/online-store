@@ -106,6 +106,8 @@ button.button1:hover {
 button.button2:hover {
   background-color: #935dd5;
   border: 2px solid #935dd5;
+}
+button.button2 a:hover {
   color: #fff;
 }
 
