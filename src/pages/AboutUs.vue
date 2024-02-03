@@ -38,35 +38,39 @@
   .background {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align items flex-start to prevent the images from stretching the container */
-    padding: 20px;
-    position: relative; /* Set position relative for the background container */
+    align-items: flex-start; 
+    position: relative; 
   }
 
   .images {
-    margin: 2rem;
-    width: 18rem; /* Set a specific width for the images container */
-    position: absolute; /* Set position absolute for the images container */
-    top: 0; /* Position from the top edge of the background container */
-    left: 0; /* Position from the left edge of the background container */
-    padding-right: 20px; /* Add some padding to the right to create space for the images */
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 20px;
+    width: 50%;
   }
 
   .images img {
-    width: 100%; /* Make images fill their container */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 10px; /* Add border radius for rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    transition: transform 0.3s ease; /* Add transition for smooth hover effect */
+    position: absolute;
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; 
   }
-
   .images img:hover {
-    transform: scale(1.05); /* Add a slight scale effect on hover */
+    transform: scale(1.05); 
   }
+  
+  .images img:nth-child(2) {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    }
 
   .content {
-    max-width: 800px;
-    text-align: center;
+    max-width: 50%; /* Set max-width to 50% */
+    text-align: center; /* Align text to the left */
   }
 
   p {
@@ -74,12 +78,33 @@
     font-size: 18px;
     line-height: 1.6;
     color: #03459a;
+    padding: 0 20px; /* Add padding for spacing */
   }
 
   @media screen and (max-width: 768px) {
+    .background {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+      align-items: center; /* Center align items */
+    }
     .content {
-      padding: 0 20px;
+      
+    max-width: 100%;
+    text-align: center; 
+  }
+
+    .images {
+      width: 15rem; /* Set width to 100% on smaller screens */
+      margin: 0; /* Remove margin for full width */
+    }
+
+    .images img {
+      width: calc(100% - 30px); /* Set image width to 100% of the container minus margin */
+    }
+
+    .images img:nth-child(2) {
+    }
+
+    .images img:nth-child(3) {
     }
   }
 </style>
-
