@@ -61,21 +61,32 @@
   .images img:hover {
     transform: scale(1.05); 
   }
-  
+  .images img:nth-child(1) {
+    position: absolute;
+    top: 23vw;
+    left: 2vw;
+    z-index: 1;
+    }
   .images img:nth-child(2) {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 2vw;
+    left: 2vw;
+    }
+    .images img:nth-child(3) {
+    position: absolute;
+    top: 10vw;
+    left: 23vw;
     }
 
   .content {
+    padding: 2rem;
     max-width: 50%; /* Set max-width to 50% */
     text-align: center; /* Align text to the left */
   }
 
   p {
     font-family: 'Arial', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.6;
     color: #03459a;
     padding: 0 20px; /* Add padding for spacing */
