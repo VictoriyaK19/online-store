@@ -51,13 +51,13 @@ section.header span {
 
 section.text {
   width: 40vw;
-  padding: 3vw; /* Adjust padding as needed */
-  text-align: right; /* Center text */
+  padding: 3vw; 
+  text-align: right; 
 }
 
 section.text p {
-  font-size: 1.5vw; /* Adjust font size as needed */
-  color: #6c2eb7; /* Adjust text color as needed */
+  font-size: 1.5vw;
+  color: #6c2eb7;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 500;
   padding-top: 6vw;
@@ -106,12 +106,10 @@ button.button1:hover {
 button.button2:hover {
   background-color: #935dd5;
   border: 2px solid #935dd5;
-}
-button.button2 a:hover {
   color: #fff;
 }
 
-/* Media query for mobile devices */
+
 @media screen and (max-width: 722px) {
   div {
     background-size: 100%;
@@ -143,7 +141,7 @@ button.button2 a:hover {
   .buttons {
     margin-top: 2vw;
     margin-right: 0;
-    justify-content: center; /* Center the buttons */
+    justify-content: center; 
   }
 
   button {
