@@ -80,8 +80,8 @@
 
   .content {
     padding: 2rem;
-    max-width: 50%; /* Set max-width to 50% */
-    text-align: center; /* Align text to the left */
+    max-width: 50%; 
+    text-align: center; 
   }
 
   p {
@@ -89,33 +89,51 @@
     font-size: 16px;
     line-height: 1.6;
     color: #03459a;
-    padding: 0 20px; /* Add padding for spacing */
+    padding: 0 20px; 
   }
 
   @media screen and (max-width: 768px) {
-    .background {
-      flex-direction: column; /* Stack items vertically on smaller screens */
-      align-items: center; /* Center align items */
-    }
-    .content {
-      
+  .background {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .content {
+    padding: 0.5vw;
     max-width: 100%;
     text-align: center; 
+
+  }
+  p {
+    font-size: 15px;
   }
 
-    .images {
-      width: 15rem; /* Set width to 100% on smaller screens */
-      margin: 0; /* Remove margin for full width */
-    }
-
-    .images img {
-      width: calc(100% - 30px); /* Set image width to 100% of the container minus margin */
-    }
-
-    .images img:nth-child(2) {
-    }
-
-    .images img:nth-child(3) {
-    }
+  .images {
+    width: auto;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
+
+
+  .images img:nth-child(1) {
+    display: none;
+  }
+
+  .images img:nth-child(3) {
+    display: none;
+  }
+
+  .images img:nth-child(2) {
+    justify-content: center;
+    position: static;
+    width: 70vw;
+    margin-top: 2rem;
+  }
+
+
+
+}
+
 </style>
