@@ -1,16 +1,18 @@
 <template>
   <the-header></the-header>
   <router-view></router-view>
-
+  <the-footer></the-footer>
 </template>
 
 <script>
 import TheHeader from "./components/layout/TheHeader.vue";
+import TheFooter from '@/components/layout/TheFooter.vue';
 
 export default {
   name: "App",
   components: {
     "the-header": TheHeader,
+    "the-footer": TheFooter,
   },
 };
 </script>
@@ -24,7 +26,6 @@ export default {
 
 html {
   font-family: "Roboto", sans-serif;
-
 }
 
 body {
@@ -41,8 +42,7 @@ div.background {
   box-sizing: border-box;
   width: calc(100% - 40px); /* Subtract twice the margin size from 100% */
   min-height: 80vh;
-
-} 
+}
 
 .route-enter-from {
   opacity: 0;
