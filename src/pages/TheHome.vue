@@ -17,7 +17,9 @@
         <button class="button1">
           <router-link to="/store">Order Now</router-link>
         </button>
-        <button class="button2"><router-link to="/aboutus">Learn More</router-link></button>
+        <button class="button2">
+          <router-link to="/aboutus">Learn More</router-link>
+        </button>
       </section>
     </section>
   </div>
@@ -51,8 +53,8 @@ section.header span {
 
 section.text {
   width: 40vw;
-  padding: 3vw; 
-  text-align: right; 
+  padding: 3vw;
+  text-align: right;
 }
 
 section.text p {
@@ -95,7 +97,6 @@ button.button2 {
 button.button2 a {
   text-decoration: none;
   color: #6c2eb7;
-
 }
 
 button.button1:hover {
@@ -108,7 +109,6 @@ button.button2:hover {
   border: 2px solid #935dd5;
   color: #fff;
 }
-
 
 @media screen and (max-width: 722px) {
   div {
@@ -141,12 +141,12 @@ button.button2:hover {
   .buttons {
     margin-top: 2vw;
     margin-right: 0;
-    justify-content: center; 
+    justify-content: center;
   }
 
   button {
     font-size: 4vw;
-    padding: 2vw 4vw
+    padding: 2vw 4vw;
   }
 }
 </style>

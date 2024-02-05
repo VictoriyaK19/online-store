@@ -9,18 +9,21 @@
       <p>
         "Welcome to [Your Online Store Name], Where Tech Meets Innovation At
         [Your Online Store Name], we're not just about selling products; we're
-        about crafting experiences. Our passion for technology and innovation
+        about crafting experiences. </p><p>
+        Our passion for technology and innovation
         drives everything we do. We believe that technology should be more than
         just functional - it should be seamlessly integrated into your life,
         enhancing it in ways you never thought possible. Our online store is
         more than just a place to shop; it's a gateway to a world of
         possibilities. From cutting-edge gadgets to revolutionary smart home
         solutions, we curate a selection of products that embody the latest
-        trends and advancements in technology. But we're more than just a
+        trends and advancements in technology. </p><p>
+        But we're more than just a
         retailer. We're a community of tech enthusiasts, always eager to share
         our knowledge and expertise. Whether you're a seasoned tech aficionado
         or a curious beginner, you'll find resources and support to help you
-        navigate the ever-evolving world of technology. At [Your Online Store
+        navigate the ever-evolving world of technology. </p><p>
+        At [Your Online Store
         Name], customer satisfaction is not just a goal; it's a standard we
         strive to exceed every day. Our dedicated team is committed to providing
         you with personalized service and support, ensuring that your shopping
@@ -63,25 +66,25 @@
   }
   .images img:nth-child(1) {
     position: absolute;
-    top: 23vw;
-    left: 2vw;
+    top: 26vw;
+    left: 3vw;
     z-index: 1;
     }
   .images img:nth-child(2) {
     position: absolute;
-    top: 2vw;
-    left: 2vw;
+    top: 2.5vw;
+    left: 3vw;
     }
     .images img:nth-child(3) {
     position: absolute;
-    top: 10vw;
+    top: 12vw;
     left: 23vw;
     }
 
   .content {
     padding: 2rem;
     max-width: 50%; 
-    text-align: center; 
+    text-align: left; 
   }
 
   p {
@@ -105,7 +108,7 @@
 
   }
   p {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .images {
