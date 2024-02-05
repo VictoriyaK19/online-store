@@ -17,13 +17,23 @@
         <button class="button1">
           <router-link to="/store">Order Now</router-link>
         </button>
-        <button class="button2">
-          <router-link to="/aboutus">Learn More</router-link>
+        <button class="button2" @mouseover="isHovered = true" @mouseleave="isHovered = false">
+          <router-link to="/aboutus" :style="{ color: isHovered ? 'white' : '#6c2eb7' }">Learn More</router-link>
         </button>
       </section>
     </section>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      isHovered: false
+    };
+  }
+}
+</script>
 
 <style scoped>
 div {
@@ -107,7 +117,6 @@ button.button1:hover {
 button.button2:hover {
   background-color: #935dd5;
   border: 2px solid #935dd5;
-  color: #fff;
 }
 
 @media screen and (max-width: 722px) {

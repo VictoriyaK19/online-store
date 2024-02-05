@@ -38,8 +38,8 @@
 
 <style scoped>
 .footer {
-  color: #fff; /* Light text color */
-  padding: 20px; /* Padding around the footer content */
+  color: #fff; 
+  padding: 20px; 
 }
 
 .footer__redes-wrapper {
@@ -50,7 +50,7 @@
 }
 
 .footer__redes-wrapper li {
-  margin: 0 10px; /* Spacing between social media links */
+  margin: 0 10px; 
 }
 
 .footer__link {
@@ -58,24 +58,33 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-  transition: color 0.3s; /* Remove transition for color */
-    margin-bottom: 1rem;
+  transition: color 0.3s; 
 }
 
 .footer__link:hover {
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9); /* Apply the shine animation on hover */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9); 
 }
 
 
 
 .separador {
-  border-left: 1px solid #fff; /* White color vertical separator */
-  margin: 0 20px; /* Spacing around separator */
+  border-left: 1px solid #fff; 
+  margin: 0 20px; 
 }
 
 .footer__texto {
-  text-align: center; /* Centered text */
-  margin-top: 20px; /* Spacing from separator */
+  text-align: center; 
+  margin-top: 20px; 
 }
-
+.footer__texto::before {
+  content: '';
+  display: block;
+  width: 40px; 
+  height: 2px; 
+  background-color: #fff; 
+  margin: 0 auto; 
+  margin-top: 2rem;
+  margin-bottom: 2rem; 
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 5);
+}
 </style>
