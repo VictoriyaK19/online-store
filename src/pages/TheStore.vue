@@ -2,20 +2,23 @@
   <div class="background">
     <div class="store">
       <div class="product" v-for="(product, index) in products" :key="index">
-        <img src="required(@/assets/${product.image})" :alt="product.name" />
-        <p>{{ products.productName }}</p>
+        <img :src="require(`@/assets/products/${product.image}`)" :alt="product.name" />
+        <p>{{ products.name }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { products } from "@/store/store";
 
 export default {
   data() {
     return {
-      products: products,
+      products: [
+    { name: 'Product 1', image: 'product1.jpg' },
+    { name: 'Product 2', image: 'product2.png' },
+    { name: 'Product 3', image: 'product3.jpg' },
+  ]
     };
   },
 };
@@ -29,7 +32,7 @@ export default {
 }
 
 .product {
-  flex: 1 1 200px; /* Flexbox shorthand */
+  flex: 1 1 200px; 
   margin: 10px;
   text-align: center;
 }
