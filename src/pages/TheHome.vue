@@ -148,7 +148,7 @@ button.button2:hover {
   }
 
   .buttons {
-    margin-top: 2vw;
+    margin-top: 1.5rem;
     margin-right: 0;
     justify-content: center;
   }

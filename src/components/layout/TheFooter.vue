@@ -4,25 +4,19 @@
 		<ul class="footer__redes-wrapper">
 			<li>
 				<a href="#" class="footer__link">
-					<i class="fab fa-facebook-f"></i>
+					<font-awesome-icon icon="facebook-f" />
 					facebook
 				</a>
 			</li>
 			<li>
 				<a href="#" class="footer__link">
-					<i class="fab fa-twitter"></i>
-					twitter
-				</a>
-			</li>
-			<li>
-				<a href="#" class="footer__link">
-					<i class="fab fa-instagram"></i>
+					
 					instagram
 				</a>
 			</li>
 			<li>
 				<a href="#" class="footer__link">
-					<i class="fab fa-youtube"></i>
+					
 					youtube
 				</a>
 			</li>
