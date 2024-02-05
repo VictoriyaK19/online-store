@@ -3,7 +3,7 @@
     <div class="store">
       <div class="product" v-for="(product, index) in products" :key="index">
         <img :src="require(`@/assets/products/${product.image}`)" :alt="product.name" />
-        <p>{{ products.name }}</p>
+        <p>{{ product.name }}</p>
       </div>
     </div>
   </div>
@@ -15,9 +15,9 @@ export default {
   data() {
     return {
       products: [
-    { name: 'Product 1', image: 'product1.jpg' },
-    { name: 'Product 2', image: 'product2.png' },
-    { name: 'Product 3', image: 'product3.jpg' },
+    { name: 'Laptop', image: 'product1.jpg' },
+    { name: 'iPhone', image: 'product2.png' },
+    { name: 'Headphones', image: 'product3.jpg' },
   ]
     };
   },
@@ -29,16 +29,36 @@ export default {
 .store {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .product {
-  flex: 1 1 200px; 
-  margin: 10px;
+  margin: 1rem;
+  padding: 1rem;
+  flex: 1 1 200px; /* Adjusted flex basis to maintain consistent width */
   text-align: center;
+  max-width: 200px;
+  border-radius: 10px;
+  border: 2px solid #004aad;
+  transition: transform 0.3s ease; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product:hover {
+  transform: scale(1.05); 
 }
 
 .product img {
   max-width: 100%;
   height: auto;
+  border-radius: 10px 10px 0 0; 
 }
+
+p {
+  margin: 0;
+  font-size: 16px; 
+}
+
 </style>

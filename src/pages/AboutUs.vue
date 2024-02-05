@@ -66,18 +66,18 @@
   }
   .images img:nth-child(1) {
     position: absolute;
-    top: 26vw;
-    left: 3vw;
+    top: 23vw;
+    left: 2vw;
     z-index: 1;
     }
   .images img:nth-child(2) {
     position: absolute;
-    top: 2.5vw;
-    left: 3vw;
+    top: 3vw;
+    left: 2vw;
     }
     .images img:nth-child(3) {
     position: absolute;
-    top: 12vw;
+    top: 10vw;
     left: 23vw;
     }
 
