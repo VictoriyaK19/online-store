@@ -9,7 +9,7 @@
       <p>
         "Welcome to [Your Online Store Name], Where Tech Meets Innovation At
         [Your Online Store Name], we're not just about selling products; we're
-        about crafting experiences. </p><p>
+        about crafting experiences. </p><br><p>
         Our passion for technology and innovation
         drives everything we do. We believe that technology should be more than
         just functional - it should be seamlessly integrated into your life,
@@ -17,12 +17,12 @@
         more than just a place to shop; it's a gateway to a world of
         possibilities. From cutting-edge gadgets to revolutionary smart home
         solutions, we curate a selection of products that embody the latest
-        trends and advancements in technology. </p><p>
+        trends and advancements in technology. </p><br><p>
         But we're more than just a
         retailer. We're a community of tech enthusiasts, always eager to share
         our knowledge and expertise. Whether you're a seasoned tech aficionado
         or a curious beginner, you'll find resources and support to help you
-        navigate the ever-evolving world of technology. </p><p>
+        navigate the ever-evolving world of technology. </p><br><p>
         At [Your Online Store
         Name], customer satisfaction is not just a goal; it's a standard we
         strive to exceed every day. Our dedicated team is committed to providing
