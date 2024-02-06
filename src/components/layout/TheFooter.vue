@@ -5,20 +5,20 @@
         <li>
           <a href="#" class="footer-link"
             ><i><font-awesome-icon :icon="['fab', 'square-facebook']" /></i>
-            facebook
+            <p>facebook</p>
           </a>
         </li>
         <li>
           <a href="#" class="footer-link"
             ><i> <font-awesome-icon :icon="['fab', 'instagram']" /></i>
-            instagram
+            <p>instagram</p>
           </a>
         </li>
         <li>
           <a href="#" class="footer-link"
             ><i> <font-awesome-icon :icon="['fab', 'youtube']" /></i>
 
-            youtube
+            <p>youtube</p>
           </a>
         </li>
       </ul>
@@ -81,5 +81,10 @@ i {
   margin-top: 2rem;
   margin-bottom: 2rem;
   box-shadow: 0 2px 5px rgba(255, 255, 255, 5);
+}
+@media (max-width: 667px) {
+  .footer-link p {
+    display: none; 
+  }
 }
 </style>
