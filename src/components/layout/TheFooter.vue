@@ -75,7 +75,7 @@ i {
   content: "";
   display: block;
   width: 40px;
-  height: 2px;
+  height: 1.5px;
   background-color: #fff;
   margin: 0 auto;
   margin-top: 2rem;
