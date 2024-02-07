@@ -57,6 +57,10 @@
 i {
   margin: auto 0.5rem;
 }
+.footer-link p {
+  padding-top: 0.5rem;
+
+}
 
 .footer-link:hover {
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
