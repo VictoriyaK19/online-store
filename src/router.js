@@ -7,6 +7,7 @@ import AboutUs from '@/pages/AboutUs';
 import MyProfile from "./pages/user/MyProfile.vue";
 import MyCart from "./pages/user/MyCart.vue";
 import NotFound from "./pages/NotFound.vue";
+import TheProduct from "./pages/TheProduct.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -14,6 +15,7 @@ const router = createRouter({
       { path: "/", redirect: "/home" },
       { path: "/home", component: TheHome },
       { path: "/store", component: TheStore },
+      { path: "/store/:productId", component: TheProduct },
       { path: "/aboutus", component: AboutUs },
       { path: "/faq", component: FAQuestions },
       { path: "/myprofile", component: MyProfile },

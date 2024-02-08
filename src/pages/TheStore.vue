@@ -1,7 +1,7 @@
 <template>
   <div class="background">
     <div class="store">
-      <div class="product" v-for="product in products" :key="product.id">
+      <div class="product" v-for="product in products" :key="product.productId">
         <img
           :src="require(`@/assets/products/${product.image}`)"
           :alt="product.name"
@@ -16,14 +16,12 @@
 </template>
 
 <script>
+import { products } from "../temp-data";
+
 export default {
   data() {
     return {
-      products: [
-        { id: "123", name: "Laptop", price: '1259,99$', image: "product1.jpg" },
-        { id: "124", name: "iPhone",  price: '1230,99$', image: "product2.png" },
-        { id: "125", name: "Headphones",  price: '123,99$', image: "product3.jpg" },
-      ],
+      products
     };
   },
 };
