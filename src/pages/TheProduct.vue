@@ -1,6 +1,6 @@
 <template>
     <div class="img-wrap">
-        <img :src="product.image" alt="">
+        <img :src="require(`@/assets/products/${product.image}`)" :alt="product.name">
     </div>
     <div class="product-details">
         <h1>{{ product.name }}</h1>
