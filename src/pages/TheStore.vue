@@ -8,7 +8,7 @@
         />
         <h3 class="product-name">{{ product.name }}</h3>
         <p class="product-price">{{ product.price }}</p>
-        <button>View Details</button>
+        <button @click="viewDetails(product)">View Details</button>
         <button @click="addToCart(product)">Add to cart</button>
       </div>
     </div>
@@ -24,6 +24,11 @@ export default {
       products
     };
   },
+  methods: {
+    viewDetails(product) {
+      console.log (product);
+    }
+  }
 };
 </script>
 
