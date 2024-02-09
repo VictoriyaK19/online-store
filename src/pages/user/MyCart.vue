@@ -1,6 +1,7 @@
 <template>
   <h1>Shopping Cart</h1>
-  <div class="product-container" v-for="product in cartItems" :key="product.id">
+  <div v-if="cartItems.length > 0">
+    <div class="product-container" v-for="product in cartItems" :key="product.id">
     <img
       class="product-image"
       :src="require(`@/assets/products/${product.image}`)"
@@ -14,6 +15,10 @@
   </div>
   <div class="total-cart">Total: {{ totalCart }}$</div>
   <button class="checkout-button">Proceed to checkout</button>
+  </div>
+  <div v-else>
+    You current have no items in your cart!
+  </div>
 </template>
 
 <script>
