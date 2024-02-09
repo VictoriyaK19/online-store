@@ -8,7 +8,10 @@
         />
         <h3 class="product-name">{{ product.name }}</h3>
         <p class="product-price">{{ product.price }}</p>
-        <button @click="viewDetails(product)">View Details</button>
+        <router-link :to="'/store/' + product.id">
+          <button>View Details</button>
+        </router-link>
+        
         <button @click="addToCart(product)">Add to cart</button>
       </div>
     </div>
