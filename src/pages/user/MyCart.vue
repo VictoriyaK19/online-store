@@ -30,7 +30,17 @@ export default {
       ],
     };
   },
-  computed: {},
+  computed: {
+    totalCart() {
+      // const total = this.cartItems.reduce((total, product) => total + parseFloat(product.price.replace(',', '.')), 0);
+      // return total.toFixed(2);
+      const total = this.cartItems.reduce((total, product) => total + parseFloat(product.price.replace(',', '.')), 0);
+      const formattedTotal = total.toFixed(2);
+      const parts = formattedTotal.split('.');
+      const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      return integerPart + ',' + parts[1];
+    }
+  },
   methods: {
     removeFromCart(product) {
       this.cartItems = this.cartItems.filter((item) => item.id !== product.id);
