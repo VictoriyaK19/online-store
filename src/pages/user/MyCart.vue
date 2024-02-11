@@ -11,7 +11,7 @@
       <h3>{{ product.name }}</h3>
       <p>{{ product.price }}</p>
     </div>
-    <button class="remove-button">Remove from cart</button>
+    <button class="remove-button" @click="removeFromCart(product)">Remove from cart</button>
   </div>
   <div class="total-cart">Total: {{ totalCart }}$</div>
   <button class="checkout-button">Proceed to checkout</button>
@@ -31,5 +31,10 @@ export default {
     };
   },
   computed: {},
+  methods: {
+    removeFromCart(product) {
+      this.cartItems = this.cartItems.filter((item) => item.id !== product.id);
+    }
+  }
 };
 </script>
