@@ -14,11 +14,9 @@
         smarter, more delightful world of tech.
       </p>
       <section class="buttons">
-        <button class="button1">
-          <router-link to="/store">Order Now</router-link>
-        </button>
-        <button class="button2" @mouseover="isHovered = true" @mouseleave="isHovered = false">
-          <router-link to="/aboutus" :style="{ color: isHovered ? 'white' : '#6c2eb7' }">Learn More</router-link>
+        <button class="button1" @click="orderNow">Order Now</button>
+        <button class="button2" @click="learnMore" @mouseover="isHovered = true" @mouseleave="isHovered = false">
+          Learn More
         </button>
       </section>
     </section>
@@ -31,8 +29,16 @@ export default {
     return {
       isHovered: false
     };
+  },
+  methods: {
+    orderNow() {
+      this.$router.push('/store');
+    },
+    learnMore() {
+      this.$router.push('/aboutus');
+    }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -96,7 +102,7 @@ button {
 button.button1 {
   background-color: #6c2eb7;
 }
-button.button1 a {
+button.button1 {
   text-decoration: none;
   color: white;
 }
@@ -104,7 +110,7 @@ button.button2 {
   margin-left: 1vw;
   background-color: #fff;
 }
-button.button2 a {
+button.button2 {
   text-decoration: none;
   color: #6c2eb7;
 }
