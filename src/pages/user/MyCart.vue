@@ -1,23 +1,27 @@
 <template>
-  <h1>Shopping Cart</h1>
-  <div v-if="cartItems.length > 0">
-    <div class="product-container" v-for="product in cartItems" :key="product.id">
-    <img
-      class="product-image"
-      :src="require(`@/assets/products/${product.image}`)"
-      alt=""
-    />
-    <div class="details-wrap">
-      <h3>{{ product.name }}</h3>
-      <p>{{ product.price }}</p>
+  <div class="cart-container">
+    <h1>Shopping Cart</h1>
+    <div v-if="cartItems.length > 0" class="cart-items">
+      <div class="product" v-for="product in cartItems" :key="product.id">
+        <img
+          :src="require(`@/assets/products/${product.image}`)"
+          class="product-image"
+          :alt="product.name"
+        />
+        <div class="product-details">
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.price }}</p>
+        </div>
+        <button class="remove-button" @click="removeFromCart(product)">
+          X
+        </button>
+      </div>
+      <div class="total-cart">Total: ${{ totalCart }}</div>
+      <button class="checkout-button">Proceed to checkout</button>
     </div>
-    <button class="remove-button" @click="removeFromCart(product)">Remove from cart</button>
-  </div>
-  <div class="total-cart">Total: {{ totalCart }}$</div>
-  <button class="checkout-button">Proceed to checkout</button>
-  </div>
-  <div v-else>
-    You current have no items in your cart!
+    <div v-else>
+      <p class="empty-cart-message">Your cart is currently empty!</p>
+    </div>
   </div>
 </template>
 
@@ -34,17 +38,109 @@ export default {
     totalCart() {
       // const total = this.cartItems.reduce((total, product) => total + parseFloat(product.price.replace(',', '.')), 0);
       // return total.toFixed(2);
-      const total = this.cartItems.reduce((total, product) => total + parseFloat(product.price.replace(',', '.')), 0);
+      const total = this.cartItems.reduce(
+        (total, product) => total + parseFloat(product.price.replace(",", ".")),
+        0
+      );
       const formattedTotal = total.toFixed(2);
-      const parts = formattedTotal.split('.');
+      const parts = formattedTotal.split(".");
       const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-      return integerPart + ',' + parts[1];
-    }
+      return integerPart + "," + parts[1];
+    },
   },
   methods: {
     removeFromCart(product) {
       this.cartItems = this.cartItems.filter((item) => item.id !== product.id);
-    }
-  }
+    },
+  },
 };
 </script>
+
+<style scoped>
+.cart-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cart-items {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.product {
+  text-align: left;
+  min-width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100px; /* Adjust image size */
+  height: auto;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.product-details {
+  flex-grow: 1;
+}
+
+.product-name {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.price {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  color: #007bff;
+}
+
+.remove-button {
+  background-color: transparent;
+  color: #dc3545;
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.remove-button:hover {
+  background-color: #f8d7da;
+}
+
+.total-cart {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.checkout-button {
+  margin-top: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-button:hover {
+  background-color: #0056b3;
+}
+
+.empty-cart-message {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 20px;
+}
+</style>
