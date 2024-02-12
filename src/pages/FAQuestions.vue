@@ -120,8 +120,8 @@ h1 {
 }
 
 .question {
-  position: relative; /* Ensure positioning context for favicon */
-  padding-right: 30px; /* Adjust spacing for the favicon */
+  position: relative; 
+  padding-right: 30px; 
   cursor: pointer;
   font-size: 18px;
   font-weight: bold;

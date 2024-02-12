@@ -113,7 +113,7 @@
   }
   
   .submit-button {
-    background-color: #007bff;
+    background-color: #146ce0e4;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -123,11 +123,11 @@
   }
   
   .submit-button:hover {
-    background-color: #0056b3;
+    background-color: #0062ca;
   }
   
   .switch-mode-button {
-    background-color: transparent; /* Transparent background */
+    background-color: transparent; 
     color: #fff;
     border: none;
     cursor: pointer;
