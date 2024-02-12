@@ -31,13 +31,12 @@ export default {
     return {
       cartItems: [
         { id: "124", name: "iPhone", price: "1230,99$", image: "product2.png" },
+        { id: "124", name: "iPhone", price: "1230,99$", image: "product2.png" },
       ],
     };
   },
   computed: {
     totalCart() {
-      // const total = this.cartItems.reduce((total, product) => total + parseFloat(product.price.replace(',', '.')), 0);
-      // return total.toFixed(2);
       const total = this.cartItems.reduce(
         (total, product) => total + parseFloat(product.price.replace(",", ".")),
         0
@@ -57,21 +56,26 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  color: #fff;
+}
 .cart-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  
 }
 
 .cart-items {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  margin: 0; 
 }
 
 .product {
+  margin: 1vw 1vh;
   text-align: left;
-  min-width: 100%;
+  min-width: 97%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -81,7 +85,7 @@ export default {
 }
 
 .product-image {
-  width: 100px; /* Adjust image size */
+  width: 100px;
   height: auto;
   border-radius: 8px;
   margin-right: 20px;
@@ -121,6 +125,8 @@ export default {
   margin-top: 20px;
   font-size: 1.2rem;
   font-weight: bold;
+  color: #fff;
+  padding-left: 1rem;
 }
 
 .checkout-button {
@@ -142,5 +148,8 @@ export default {
   font-size: 1.2rem;
   text-align: center;
   margin-top: 20px;
+  color: #fff;
+  min-height: 50vh;
+  margin-top: 3rem;
 }
 </style>
