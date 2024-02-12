@@ -28,8 +28,8 @@ export default {
     };
   },
   methods: {
-    viewDetails(product) {
-      console.log (product);
+    addToCart() {
+      
     }
   }
 };
