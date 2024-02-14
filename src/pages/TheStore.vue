@@ -12,13 +12,14 @@
           <button>View Details</button>
         </router-link>
         
-        <button @click="addToCart(product)">Add to cart</button>
+        <button @click="addToCartAction(product)">Add to cart</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { products } from "../temp-data";
 
 export default {
@@ -28,9 +29,7 @@ export default {
     };
   },
   methods: {
-    addToCart() {
-      
-    }
+    ...mapActions(['addToCartAction'])
   }
 };
 </script>

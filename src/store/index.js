@@ -10,6 +10,22 @@ const store = createStore({
       ],
     };
   },
+  mutations: {
+    addToCart(state, product) {
+      state.cart.push(product);
+    }
+  },
+  actions: {
+    addToCartAction({ commit }, product) {
+      commit('addToCart', product);
+    }
+  },
+  getters: {
+    totalCart(state) {
+      return state.cart.reduce((total, product) => total + product.price, 0);
+    }
+  }
+  
 });
 
 export default store;
