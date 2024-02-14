@@ -10,7 +10,7 @@
       <div class="product-details">
         <h1>{{ product.name }}</h1>
         <h3 class="price">{{ product.price }}</h3>
-        <button class="add-to-cart" @click="addToCart">Add to Cart</button>
+        <button class="add-to-cart" @click="addToCartAction(product)">Add to Cart</button>
       </div>
     </div>
     <div v-else>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { products } from "../temp-data";
 import NotFound from "./NotFound.vue";
 
@@ -34,6 +35,9 @@ export default {
   components: {
     "not-found": NotFound,
   },
+  methods: {
+    ...mapActions(['addToCartAction'])
+  }
 };
 </script>
 
