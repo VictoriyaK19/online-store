@@ -26,13 +26,12 @@
 </template>
 
 <script>
+import store from  "@/store";
+
 export default {
   data() {
     return {
-      cartItems: [
-        { id: "124", name: "iPhone", price: "1230,99$", image: "product2.png" },
-        { id: "124", name: "iPhone", price: "1230,99$", image: "product2.png" },
-      ],
+      cartItems: store.state.cart,
     };
   },
   computed: {
