@@ -8,11 +8,11 @@
         />
         <h3 class="product-name">{{ product.name }}</h3>
         <p class="product-price">{{ product.price }}</p>
-        <router-link :to="'/store/' + product.id">
-          <button>View Details</button>
+        <router-link class="view-details-link" :to="'/store/' + product.id">
+          View Details
         </router-link>
         
-        <button @click="addToCartAction(product)">Add to cart</button>
+        <button class="add-to-cart-button" @click="addToCartAction(product)">Add to cart</button>
       </div>
     </div>
   </div>
@@ -73,5 +73,33 @@ p {
   font-size: 16px;
   padding-bottom: 0.5rem;
 
+}
+.view-details-link {
+  color: #004aad;
+  text-decoration: none;
+  font-size: 14px;
+  display: block;
+  margin-top: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.view-details-link:hover {
+  color: #002b72;
+}
+
+.add-to-cart-button {
+  background-color: #004aad;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.add-to-cart-button:hover {
+  background-color: #002b72;
 }
 </style>
