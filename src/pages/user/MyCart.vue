@@ -33,9 +33,9 @@ export default {
     }
   },
   methods: {
-    // removeFromCart(product) {
-    
-    // },
+    removeFromCart(product) {
+      this.$store.commit('removeFromCart', product);
+    },
   },
 };
 </script>

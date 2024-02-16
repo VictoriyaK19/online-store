@@ -20,11 +20,9 @@ const store = createStore({
     addToCart(state, product) {
       state.cart.push(product);
     },
-  },
-  actions: {
-    addToCartAction({ commit }, product) {
-      commit("addToCart", product);
-    },
+    removeFromCart(state, product) {
+      state.cart = state.cart.filter(p => p.id !== product.id);
+    }
   },
   getters: {
     totalCart(state) {
