@@ -16,7 +16,7 @@
           X
         </button>
       </div>
-      <div class="total-cart">Total: ${{  $store.getters.totalCart }}</div>
+      <div class="total-cart">Total: ${{ totalCart }}</div>
       <button class="checkout-button">Proceed to checkout</button>
     </div>
     <div v-else>
@@ -27,6 +27,11 @@
 
 <script>
 export default {
+  computed: {
+    totalCart() {
+      return this.$store.getters.totalCart;
+    }
+  },
   methods: {
     // removeFromCart(product) {
     

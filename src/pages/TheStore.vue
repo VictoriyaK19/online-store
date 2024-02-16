@@ -12,14 +12,13 @@
           View Details
         </router-link>
         
-        <button class="add-to-cart-button" @click="addToCartAction(product)">Add to cart</button>
+        <button class="add-to-cart-button" @click="addToCart(product)">Add to cart</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
 import { products } from "../temp-data";
 
 export default {
@@ -29,7 +28,9 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['addToCartAction'])
+    addToCart(product) {
+      this.$store.commit('addToCart', product);
+    }
   }
 };
 </script>
