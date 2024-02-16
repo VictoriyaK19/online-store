@@ -1,8 +1,8 @@
 <template>
   <div class="cart-container">
     <h1>Shopping Cart</h1>
-    <div v-if="cartItems.length > 0" class="cart-items">
-      <div class="product" v-for="product in cartItems" :key="product.id">
+    <div v-if="$store.state.cart && $store.state.cart.length > 0" class="cart-items">
+      <div class="product" v-for="product in $store.state.cart" :key="product.id">
         <img
           :src="require(`@/assets/products/${product.image}`)"
           class="product-image"
@@ -16,7 +16,7 @@
           X
         </button>
       </div>
-      <div class="total-cart">Total: ${{ totalCart }}</div>
+      <div class="total-cart">Total: ${{  $store.getters.totalCart }}</div>
       <button class="checkout-button">Proceed to checkout</button>
     </div>
     <div v-else>
@@ -26,30 +26,11 @@
 </template>
 
 <script>
-import store from  "@/store";
-
 export default {
-  data() {
-    return {
-      cartItems: store.state.cart,
-    };
-  },
-  computed: {
-    totalCart() {
-      const total = this.cartItems.reduce(
-        (total, product) => total + parseFloat(product.price.replace(",", ".")),
-        0
-      );
-      const formattedTotal = total.toFixed(2);
-      const parts = formattedTotal.split(".");
-      const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-      return integerPart + "," + parts[1];
-    },
-  },
   methods: {
-    removeFromCart(product) {
-      this.cartItems = this.cartItems.filter((item) => item.id !== product.id);
-    },
+    // removeFromCart(product) {
+    
+    // },
   },
 };
 </script>
