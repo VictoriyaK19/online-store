@@ -156,7 +156,6 @@ h1 {
 }
 .quantity {
   display: flex;
-  /* flex-direction: column; for mobiles*/
   align-items: center;
   margin-right: 1rem;
 }
@@ -182,4 +181,14 @@ h1 {
   font-size: 1.2rem;
 }
 
+@media screen and (max-width: 420px) {
+  .product {
+    padding-right: 3vw;
+    padding-left: 1vw;
+  }
+  .quantity {
+  flex-direction: column;
+}
+
+}
 </style>
