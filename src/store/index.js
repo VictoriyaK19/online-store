@@ -4,7 +4,7 @@ const store = createStore({
   state() {
     return {
       user: null,
-      cart: [],
+      cart: [{ id: "124", name: "iPhone", price: "1230,99$", image: "product2.png", quantity: 2 }],
     };
   },
   mutations: {

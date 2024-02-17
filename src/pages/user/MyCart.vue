@@ -1,8 +1,15 @@
 <template>
   <div class="cart-container">
     <h1>Shopping Cart</h1>
-    <div v-if="$store.state.cart && $store.state.cart.length > 0" class="cart-items">
-      <div class="product" v-for="product in $store.state.cart" :key="product.id">
+    <div
+      v-if="$store.state.cart && $store.state.cart.length > 0"
+      class="cart-items"
+    >
+      <div
+        class="product"
+        v-for="product in $store.state.cart"
+        :key="product.id"
+      >
         <img
           :src="require(`@/assets/products/${product.image}`)"
           class="product-image"
@@ -11,15 +18,17 @@
         <div class="product-details">
           <h3>{{ product.name }}</h3>
           <p>{{ product.price }}</p>
-          <p>Quantity: {{ product.quantity }}</p>
-          <button @click="decreaseQuantity(product)">-</button>
-          <button @click="addToCart(product)">+</button>
         </div>
+        <div class="quantity">
+              <button class="quantity-button" @click="decreaseQuantity(product)">−</button>
+              <span class="quantity-text">{{ product.quantity }}</span>
+              <button class="quantity-button" @click="addToCart(product)">+</button>
+            </div>
         <button class="remove-button" @click="removeFromCart(product)">
           X
         </button>
       </div>
-      <div class="total-cart">Total: ${{ totalCart }}</div>
+      <div class="total-cart">Total: {{ totalCart }} $</div>
       <button class="checkout-button">Proceed to checkout</button>
     </div>
     <div v-else>
@@ -33,18 +42,18 @@ export default {
   computed: {
     totalCart() {
       return this.$store.getters.totalCart;
-    }
+    },
   },
   methods: {
     addToCart(product) {
-      this.$store.commit('addToCart', product);
+      this.$store.commit("addToCart", product);
     },
     removeFromCart(product) {
-      this.$store.commit('removeFromCart', product);
+      this.$store.commit("removeFromCart", product);
     },
     decreaseQuantity(product) {
-      this.$store.commit('decreaseQuantity', product);
-    }
+      this.$store.commit("decreaseQuantity", product);
+    },
   },
 };
 </script>
@@ -57,13 +66,12 @@ h1 {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  
 }
 
 .cart-items {
   display: grid;
   grid-template-columns: 1fr;
-  margin: 0; 
+  margin: 0;
 }
 
 .product {
@@ -146,4 +154,32 @@ h1 {
   min-height: 50vh;
   margin-top: 3rem;
 }
+.quantity {
+  display: flex;
+  /* flex-direction: column; for mobiles*/
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.quantity-button {
+  margin: 0 1vw;
+  padding: 1vw;
+  background-color: transparent;
+  border: none;
+  border-radius: 80%;
+  padding: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quantity-button:hover {
+  background-color: #f0f0f0;
+}
+
+.quantity-text {
+  margin: 0 5px; 
+  font-size: 1.2rem;
+}
+
 </style>
