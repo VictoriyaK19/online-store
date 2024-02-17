@@ -11,6 +11,9 @@
         <div class="product-details">
           <h3>{{ product.name }}</h3>
           <p>{{ product.price }}</p>
+          <p>Quantity: {{ product.quantity }}</p>
+          <button @click="decreaseQuantity(product)">-</button>
+          <button @click="addToCart(product)">+</button>
         </div>
         <button class="remove-button" @click="removeFromCart(product)">
           X
@@ -33,9 +36,15 @@ export default {
     }
   },
   methods: {
+    addToCart(product) {
+      this.$store.commit('addToCart', product);
+    },
     removeFromCart(product) {
       this.$store.commit('removeFromCart', product);
     },
+    decreaseQuantity(product) {
+      this.$store.commit('decreaseQuantity', product);
+    }
   },
 };
 </script>
