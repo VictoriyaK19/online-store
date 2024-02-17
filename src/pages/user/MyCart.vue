@@ -64,6 +64,7 @@ h1 {
 }
 .cart-container {
   max-width: 800px;
+  min-height: 65vh;
   margin: 0 auto;
   padding: 20px;
 }
