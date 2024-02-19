@@ -8,6 +8,7 @@ import MyProfile from "./pages/user/MyProfile.vue";
 import MyCart from "./pages/user/MyCart.vue";
 import NotFound from "./pages/NotFound.vue";
 import TheProduct from "./pages/TheProduct.vue";
+import TheAuth from '@/pages/TheAuth';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -19,6 +20,7 @@ const router = createRouter({
       { path: "/aboutus", component: AboutUs },
       { path: "/faq", component: FAQuestions },
       { path: "/myprofile", component: MyProfile },
+      { path: "/auth", component: TheAuth },
       { path: "/mycart", component: MyCart },
       { path: "/:notFound(.*)", component: NotFound },
     ],

@@ -1,141 +1,84 @@
 <template>
-    <div class="container">
-      <form @submit.prevent="submitForm" class="form">
-        <div class="form-control">
-          <label for="email">E-Mail</label>
-          <input type="email" id="email" v-model.trim="email" @focus="clearValidation" />
-        </div>
-        <div class="form-control">
-          <label for="password">Password</label>
-          <input type="password" id="password" v-model.trim="password" @focus="clearValidation" />
-        </div>
-        <p v-if="!formIsValid" class="error-message">
-          Please enter a valid email and password (must be at least 6 characters long).
-        </p>
-        <button class="submit-button">{{ submitButtonCaption }}</button>
-      </form>
-      <button type="button" class="switch-mode-button" @click="switchAuthForm">{{ switchModeButtonCaption }}</button>
+  <div class="my-profile background">
+    <h2>My Profile</h2>
+    <div class="profile-info">
+
+      <div class="details">
+        <p><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Address:</strong> {{ user.address }}</p>
+        <!-- Additional user details can be displayed here -->
+      </div>
     </div>
-  </template>
-  
-  
-  <script>
-  export default {
-    data() {
-      return {
-        email: "",
-        password: "",
-        formIsValid: true,
-        mode: "login",
-      };
-    },
-    computed: {
-      submitButtonCaption() {
-          if (this.mode === 'login') {
-              return 'Login';
-          } else {
-              return 'Signup';
-          }
+    <div class="orders">
+      <h3>My Orders</h3>
+      <ul>
+        <li v-for="order in orders" :key="order.id">
+          <p><strong>Order ID:</strong> {{ order.id }}</p>
+          <p><strong>Date:</strong> {{ order.date }}</p>
+          <p><strong>Total:</strong> ${{ order.total }}</p>
+          <!-- Additional order details can be displayed here -->
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      user: {
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'johndoe@example.com',
+        avatar: 'path/to/avatar.jpg',
+        address: '123 Main St, Anytown, USA',
+        // Add more user details as needed
       },
-      switchModeButtonCaption() {
-          if (this.mode === 'login') {
-              return 'Signup instead';
-          } else {
-              return 'Login instead';
-          }
-      }
-    },
-    methods: {
-      submitForm() {
-        this.formIsValid = true;
-        if (
-          this.email === "" ||
-          !this.email.includes("@") ||
-          this.password.length < 6
-        ) {
-          this.formIsValid = false;
-          return;
-        }
-        // send http request...
-      },
-      switchAuthForm() {
-          if (this.mode === 'login') {
-              this.mode = 'signup';
-          } else {
-              this.mode = 'login';
-          }
-      },
-    },
-  };
-  </script>
-  <style scoped>
-  .container {
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .form {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    margin-bottom: 20px; 
-  }
-  
-  .form-control {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s ease;
-  }
-  
-  input:focus {
-    outline: none;
-    border-color: #007bff;
-  }
-  
-  .error-message {
-    color: #dc3545;
-  }
-  
-  .submit-button {
-    background-color: #146ce0e4;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .submit-button:hover {
-    background-color: #0062ca;
-  }
-  
-  .switch-mode-button {
-    background-color: transparent; 
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .switch-mode-button:hover {
-    color: #fff;
-  }
-  </style>
-  
+      orders: [
+        {
+          id: 1,
+          date: '2024-02-18',
+          total: 50.00,
+          // Add more order details as needed
+        },
+        {
+          id: 2,
+          date: '2024-02-16',
+          total: 75.00,
+          // Add more order details as needed
+        },
+        // Add more orders as needed
+      ],
+    };
+  },
+};
+</script>
+
+<style scoped>
+.my-profile {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+.details p {
+  margin: 5px 0;
+}
+
+.orders {
+  margin-top: 20px;
+}
+
+.orders li {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.orders li:last-child {
+  border-bottom: none;
+}
+</style>
