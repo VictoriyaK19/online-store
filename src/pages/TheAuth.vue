@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+  <the-registration></the-registration>
+  <!-- <div class="container">
     <form @submit.prevent="submitForm" class="form">
       <div v-if="mode === 'login'">
         <div class="form-control">
@@ -21,57 +22,8 @@
           />
         </div>
       </div>
-      <!-- Fields for signup -->
-      <div v-if="mode === 'signup'">
-        <div class="form-control">
-          <label for="firstName">First Name</label>
-          <input
-            type="text"
-            id="firstName"
-            v-model.trim="firstName"
-            @focus="clearValidation"
-          />
-        </div>
-        <div class="form-control">
-          <label for="lastName">Last Name</label>
-          <input
-            type="text"
-            id="lastName"
-            v-model.trim="lastName"
-            @focus="clearValidation"
-          />
-        </div>
-        
-        <div class="form-control">
-          <label for="email">E-Mail</label>
-          <input
-            type="email"
-            id="email"
-            v-model.trim="email"
-            @focus="clearValidation"
-          />
-        </div>
-        <div class="form-control">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            v-model.trim="password"
-            @focus="clearValidation"
-          />
-        </div>
-        <div class="form-control">
-          <label for="confirmPassword">Confirm Password</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            v-model.trim="confirmPassword"
-            @focus="clearValidation"
-          />
-        </div>
-      </div>
 
-      <!-- Error message -->
+
       <p v-if="!formIsValid" class="error-message">
         Please enter valid information (email, password, first name, last name,
         and confirmation password must be provided, and password must be at
@@ -82,61 +34,67 @@
     <button type="button" class="switch-mode-button" @click="switchAuthForm">
       {{ switchModeButtonCaption }}
     </button>
-  </div>
+  </div> -->
 </template>
 
 <script>
+import TheRegistration from "@/components/auth/TheRegistration";
+
 export default {
-  data() {
-    return {
-      email: "",
-      password: "",
-      confirmPassword: "", // New field
-      firstName: "", // New field
-      lastName: "", // New field
-      formIsValid: true,
-      mode: "login",
-    };
+  components: {
+    "the-registration": TheRegistration,
   },
-  computed: {
-    submitButtonCaption() {
-      return this.mode === "login" ? "Login" : "Signup";
-    },
-    switchModeButtonCaption() {
-      return this.mode === "login" ? "Signup instead" : "Login instead";
-    },
-  },
-  methods: {
-    submitForm() {
-      this.formIsValid = true;
-      if (
-        this.email === "" ||
-        !this.email.includes("@") ||
-        this.password.length < 6 ||
-        (this.mode === "signup" &&
-          (this.firstName === "" ||
-            this.lastName === "" ||
-            this.confirmPassword === "" ||
-            this.password !== this.confirmPassword))
-      ) {
-        this.formIsValid = false;
-        return;
-      }
-      // send http request...
-    },
-    switchAuthForm() {
-      this.mode = this.mode === "login" ? "signup" : "login";
-    },
-    clearValidation() {
-      this.formIsValid = true;
-    },
-  },
+  //   data() {
+  //     return {
+  //       email: "",
+  //       password: "",
+  //       confirmPassword: "",
+  //       firstName: "",
+  //       lastName: "",
+  //       formIsValid: true,
+  //       mode: "login",
+  //     };
+  //   },
+  //   computed: {
+  //     submitButtonCaption() {
+  //       return this.mode === "login" ? "Login" : "Signup";
+  //     },
+  //     switchModeButtonCaption() {
+  //       return this.mode === "login" ? "Signup instead" : "Login instead";
+  //     },
+  //   },
+  //   methods: {
+  //     submitForm() {
+  //       this.formIsValid = true;
+  //       if (
+  //         this.email === "" ||
+  //         !this.email.includes("@") ||
+  //         this.password.length < 6 ||
+  //         (this.mode === "signup" &&
+  //           (this.firstName === "" ||
+  //             this.lastName === "" ||
+  //             this.confirmPassword === "" ||
+  //             this.password !== this.confirmPassword))
+  //       ) {
+  //         this.formIsValid = false;
+  //         return;
+  //       }
+  //       // send http request...
+  //     },
+  //     switchAuthForm() {
+  //       this.mode = this.mode === "login" ? "signup" : "login";
+  //     },
+  //     clearValidation() {
+  //       this.formIsValid = true;
+  //     },
+  //   },
 };
 </script>
 
-<style scoped>
+<style>
 .container {
-  height: 70vh;
+  margin-top: 1rem;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
