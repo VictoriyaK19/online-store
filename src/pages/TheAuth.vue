@@ -1,51 +1,23 @@
 <template>
-  <the-registration v-if="mode === 'login'"></the-registration>
-  <!-- <div class="container">
-    <form @submit.prevent="submitForm" class="form">
-      <div v-if="mode === 'login'">
-        <div class="form-control">
-          <label for="email">E-Mail</label>
-          <input
-            type="email"
-            id="email"
-            v-model.trim="email"
-            @focus="clearValidation"
-          />
-        </div>
-        <div class="form-control">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            v-model.trim="password"
-            @focus="clearValidation"
-          />
-        </div>
-      </div>
-
-
-      <p v-if="!formIsValid" class="error-message">
-        Please enter valid information (email, password, first name, last name,
-        and confirmation password must be provided, and password must be at
-        least 6 characters long).
-      </p>
-      <button class="submit-button">{{ submitButtonCaption }}</button>
-    </form>
-    
-  </div> -->
+  <div class="container">
+  <the-registration v-if="mode === 'signup'"></the-registration>
+  <the-login v-else></the-login>
   <div class="button-container">
   <button type="button" class="switch-mode-button" @click="switchAuthForm">
     {{ switchModeButtonCaption }}
   </button>
 </div>
+</div>
 </template>
 
 <script>
 import TheRegistration from "@/components/auth/TheRegistration";
+import TheLogin from "@/components/auth/TheLogin";
 
 export default {
   components: {
     "the-registration": TheRegistration,
+    "the-login":  TheLogin
   },
   data() {
     return {

@@ -1,5 +1,4 @@
 <template>
-  <div class="container">
     <form @submit.prevent="submitForm" class="form">
       <div class="form-control">
         <label for="firstName">First Name</label>
@@ -34,7 +33,7 @@
         <button @click="signInWithGoogle">Sign In With Google</button>
       </div>
     </form>
-  </div>
+
 </template>
 
 <script setup>
