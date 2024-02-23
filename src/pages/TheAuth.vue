@@ -1,5 +1,5 @@
 <template>
-  <the-registration></the-registration>
+  <the-registration v-if="mode === 'login'"></the-registration>
   <!-- <div class="container">
     <form @submit.prevent="submitForm" class="form">
       <div v-if="mode === 'login'">
@@ -31,10 +31,13 @@
       </p>
       <button class="submit-button">{{ submitButtonCaption }}</button>
     </form>
-    <button type="button" class="switch-mode-button" @click="switchAuthForm">
-      {{ switchModeButtonCaption }}
-    </button>
+    
   </div> -->
+  <div class="button-container">
+  <button type="button" class="switch-mode-button" @click="switchAuthForm">
+    {{ switchModeButtonCaption }}
+  </button>
+</div>
 </template>
 
 <script>
@@ -44,50 +47,44 @@ export default {
   components: {
     "the-registration": TheRegistration,
   },
-  //   data() {
-  //     return {
-  //       email: "",
-  //       password: "",
-  //       confirmPassword: "",
-  //       firstName: "",
-  //       lastName: "",
-  //       formIsValid: true,
-  //       mode: "login",
-  //     };
-  //   },
-  //   computed: {
-  //     submitButtonCaption() {
-  //       return this.mode === "login" ? "Login" : "Signup";
-  //     },
-  //     switchModeButtonCaption() {
-  //       return this.mode === "login" ? "Signup instead" : "Login instead";
-  //     },
-  //   },
-  //   methods: {
-  //     submitForm() {
-  //       this.formIsValid = true;
-  //       if (
-  //         this.email === "" ||
-  //         !this.email.includes("@") ||
-  //         this.password.length < 6 ||
-  //         (this.mode === "signup" &&
-  //           (this.firstName === "" ||
-  //             this.lastName === "" ||
-  //             this.confirmPassword === "" ||
-  //             this.password !== this.confirmPassword))
-  //       ) {
-  //         this.formIsValid = false;
-  //         return;
-  //       }
-  //       // send http request...
-  //     },
-  //     switchAuthForm() {
-  //       this.mode = this.mode === "login" ? "signup" : "login";
-  //     },
-  //     clearValidation() {
-  //       this.formIsValid = true;
-  //     },
-  //   },
+  data() {
+    return {
+      mode: "login",
+    };
+  },
+  computed: {
+    submitButtonCaption() {
+      return this.mode === "login" ? "Login" : "Signup";
+    },
+    switchModeButtonCaption() {
+      return this.mode === "login" ? "Signup instead" : "Login instead";
+    },
+  },
+  methods: {
+    //     submitForm() {
+    //       this.formIsValid = true;
+    //       if (
+    //         this.email === "" ||
+    //         !this.email.includes("@") ||
+    //         this.password.length < 6 ||
+    //         (this.mode === "signup" &&
+    //           (this.firstName === "" ||
+    //             this.lastName === "" ||
+    //             this.confirmPassword === "" ||
+    //             this.password !== this.confirmPassword))
+    //       ) {
+    //         this.formIsValid = false;
+    //         return;
+    //       }
+    //       // send http request...
+    //     },
+    switchAuthForm() {
+      this.mode = this.mode === "login" ? "signup" : "login";
+    },
+    //     clearValidation() {
+    //       this.formIsValid = true;
+    //     },
+  },
 };
 </script>
 
@@ -149,13 +146,16 @@ input:focus {
 .submit-button:hover {
   background-color: #0062ca;
 }
-
+.button-container {
+  text-align: center;
+}
 .switch-mode-button {
   background-color: transparent;
   color: #fff;
   border: none;
   cursor: pointer;
   transition: color 0.3s ease;
+  display: inline-block;
 }
 
 .switch-mode-button:hover {
