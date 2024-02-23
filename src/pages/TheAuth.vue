@@ -33,29 +33,9 @@ export default {
     },
   },
   methods: {
-    //     submitForm() {
-    //       this.formIsValid = true;
-    //       if (
-    //         this.email === "" ||
-    //         !this.email.includes("@") ||
-    //         this.password.length < 6 ||
-    //         (this.mode === "signup" &&
-    //           (this.firstName === "" ||
-    //             this.lastName === "" ||
-    //             this.confirmPassword === "" ||
-    //             this.password !== this.confirmPassword))
-    //       ) {
-    //         this.formIsValid = false;
-    //         return;
-    //       }
-    //       // send http request...
-    //     },
     switchAuthForm() {
       this.mode = this.mode === "login" ? "signup" : "login";
     },
-    //     clearValidation() {
-    //       this.formIsValid = true;
-    //     },
   },
 };
 </script>

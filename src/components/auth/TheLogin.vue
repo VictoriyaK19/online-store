@@ -11,7 +11,7 @@
           <input type="password" id="password" v-model.trim="password" />
         </div>
         <div v-if="errMsg" class="form-control">
-            <p>{{ errMsg }}</p>
+            <p class="error-message">{{ errMsg }}</p>
         </div>
         <div class="form-control">
           <button class="submit-button" @click="register">Submit</button>
@@ -44,7 +44,21 @@ const register = () => {
     })
     .catch((error) => {
       console.log(error.code);
-      alert(error.message);
+      console.log(error.message);
+      switch (error.code) {
+        case "auth/invalid-email":
+            errMsg.value = "Invalid email";
+            break;
+        case  "auth/user-not-found":
+            errMsg.value = "No account with that email was found";
+            break;
+        case "auth/wrong-password":
+            errMsg.value = "Wrong password.";
+            break;
+        default:
+          errMsg.value = "Invalid credentials!";
+          break;
+      }
     });
 };
 
