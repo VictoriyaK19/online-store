@@ -37,8 +37,6 @@ import { useRouter } from "vue-router";
       firstName: "",
       lastName: "",
       email: "",
-      avatar: "",
-      address: "",
     });
 
     const orders = [
