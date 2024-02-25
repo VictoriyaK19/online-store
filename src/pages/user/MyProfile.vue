@@ -22,14 +22,14 @@
       <button @click="handleLogOut">Logout</button>
     </div>
   </div>
+  <the-auth v-else></the-auth>
 </template>
 
 <script setup>
+import TheAuth from "../TheAuth.vue";
 import { onMounted, ref } from "vue";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "vue-router";
-
-
 
     const router = useRouter();
 
