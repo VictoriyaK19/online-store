@@ -1,13 +1,11 @@
 <template>
-  <div class="my-profile background">
+  <div v-if="isLoggedIn" class="my-profile background">
     <h2>My Profile</h2>
     <div class="profile-info">
-
       <div class="details">
         <p><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
         <p><strong>Email:</strong> {{ user.email }}</p>
         <p><strong>Address:</strong> {{ user.address }}</p>
-        <!-- Additional user details can be displayed here -->
       </div>
     </div>
     <div class="orders">
@@ -17,43 +15,71 @@
           <p><strong>Order ID:</strong> {{ order.id }}</p>
           <p><strong>Date:</strong> {{ order.date }}</p>
           <p><strong>Total:</strong> ${{ order.total }}</p>
-          <!-- Additional order details can be displayed here -->
         </li>
       </ul>
+    </div>
+    <div>
+      <button @click="handleLogOut">Logout</button>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      user: {
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'johndoe@example.com',
-        avatar: 'path/to/avatar.jpg',
-        address: '123 Main St, Anytown, USA',
-        // Add more user details as needed
+<script setup>
+import { onMounted, ref } from "vue";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useRouter } from "vue-router";
+
+
+
+    const router = useRouter();
+
+    const user = ref({
+      firstName: "",
+      lastName: "",
+      email: "",
+      avatar: "",
+      address: "",
+    });
+
+    const orders = [
+      {
+        id: 1,
+        date: "2024-02-18",
+        total: 50.0,
       },
-      orders: [
-        {
-          id: 1,
-          date: '2024-02-18',
-          total: 50.00,
-          // Add more order details as needed
-        },
-        {
-          id: 2,
-          date: '2024-02-16',
-          total: 75.00,
-          // Add more order details as needed
-        },
-        // Add more orders as needed
-      ],
+      {
+        id: 2,
+        date: "2024-02-16",
+        total: 75.0,
+      },
+    ];
+
+    const isLoggedIn = ref(false);
+
+    let auth;
+    onMounted(() => {
+       auth = getAuth();
+      onAuthStateChanged(auth, (firebaseUser) => {
+        if (firebaseUser) {
+          user.value.firstName = firebaseUser.displayName;
+          user.value.email = firebaseUser.email;
+          isLoggedIn.value = true;
+        } else {
+          isLoggedIn.value = false;
+          console.log("User is signed out");
+        }
+      });
+    });
+
+    const handleLogOut = () => {
+      signOut(auth).then(() => {
+        router.push("/");
+      });
     };
-  },
-};
+
+
+
+
 </script>
 
 <style scoped>
@@ -62,7 +88,6 @@ export default {
   margin: 0 auto;
   padding: 20px;
 }
-
 
 .details p {
   margin: 5px 0;
