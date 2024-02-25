@@ -29,9 +29,18 @@
       <button class="submit-button" @click="register">Submit</button>
     </div>
 
-    <div class="form-control">
-      <button @click="signInWithGoogle">Sign In With Google</button>
-    </div>
+    <div class="button-container">
+        <button @click="signInWithGoogle" class="google-signin-button">
+          <span class="button-text">Sign In With Google</span>
+          <div class="google-icon-container">
+            <img
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+              alt="Google Logo"
+              class="google-icon"
+            />
+          </div>
+        </button>
+      </div>
   </form>
 </template>
 

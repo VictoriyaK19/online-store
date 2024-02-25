@@ -5,7 +5,6 @@
       <div class="details">
         <p><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
         <p><strong>Email:</strong> {{ user.email }}</p>
-        <p><strong>Address:</strong> {{ user.address }}</p>
       </div>
     </div>
     <div class="orders">
