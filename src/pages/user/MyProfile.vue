@@ -85,7 +85,6 @@ import { useRouter } from "vue-router";
 <style scoped>
 .my-profile {
   max-width: 800px;
-  margin: 0 auto;
   padding: 20px;
 }
 
