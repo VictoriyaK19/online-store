@@ -71,10 +71,13 @@ import { useRouter } from "vue-router";
       });
     });
 
-    const handleLogOut = () => {
-      signOut(auth).then(() => {
-        router.push("/");
-      });
+    const handleLogOut = async () => {
+  try {
+    await signOut(auth);
+    router.push("/");
+  } catch (error) {
+    console.error("Error signing out:", error.message);
+  }
     };
 
 
