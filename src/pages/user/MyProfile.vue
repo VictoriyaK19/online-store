@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isLoggedIn" class="my-profile background">
+  <div v-if="isLoggedIn" class="background my-profile ">
     <h2>My Profile</h2>
     <div class="profile-info">
       <div class="details">
@@ -86,6 +86,7 @@ import { useRouter } from "vue-router";
 .my-profile {
   max-width: 800px;
   padding: 20px;
+  margin: 1rem auto;
 }
 
 .details p {
@@ -104,5 +105,18 @@ import { useRouter } from "vue-router";
 
 .orders li:last-child {
   border-bottom: none;
+}
+.my-profile button {
+  background-color: #de4050; 
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.my-profile button:hover {
+  background-color: #c82333; 
 }
 </style>
