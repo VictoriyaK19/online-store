@@ -30,17 +30,17 @@
     </div>
 
     <div class="button-container">
-        <button @click="signInWithGoogle" class="google-signin-button">
-          <span class="button-text">Sign In With Google</span>
-          <div class="google-icon-container">
-            <img
-              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-              alt="Google Logo"
-              class="google-icon"
-            />
-          </div>
-        </button>
-      </div>
+      <button @click="signInWithGoogle" class="google-signin-button">
+        <span class="button-text">Sign In With Google</span>
+        <div class="google-icon-container">
+          <img
+            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+            alt="Google Logo"
+            class="google-icon"
+          />
+        </div>
+      </button>
+    </div>
   </form>
 </template>
 
@@ -51,6 +51,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  updateProfile
 } from "firebase/auth";
 import { useRouter } from "vue-router";
 
@@ -68,9 +69,17 @@ const register = () => {
   }
 
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
-    .then(() => {
-      console.log("Successfully registered!");
-      router.push("/store");
+    .then((userCredential) => {
+      const user = userCredential.user;
+      const displayName = `${firstName.value} ${lastName.value}`;
+      updateProfile(user, { displayName })
+        .then(() => {
+          console.log("Successfully registered!");
+          router.push("/store");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     })
     .catch((error) => {
       console.log(error.code);
@@ -81,12 +90,12 @@ const register = () => {
 const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
-  .then((result) => {
-    console.log(result.user);
-    router.push("/store");
-  })
-  .catch((error) => {
-    console.log(error);
-  })
+    .then((result) => {
+      console.log(result.user);
+      router.push("/store");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 </script>

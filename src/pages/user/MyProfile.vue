@@ -3,7 +3,7 @@
     <h2>My Profile</h2>
     <div class="profile-info">
       <div class="details">
-        <p><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
+        <p><strong>Name:</strong> {{ user.displayName }}</p>
         <p><strong>Email:</strong> {{ user.email }}</p>
       </div>
     </div>
@@ -33,8 +33,7 @@ import { useRouter } from "vue-router";
     const router = useRouter();
 
     const user = ref({
-      firstName: "",
-      lastName: "",
+      displayName: "",
       email: "",
     });
 
@@ -58,7 +57,7 @@ import { useRouter } from "vue-router";
        auth = getAuth();
       onAuthStateChanged(auth, (firebaseUser) => {
         if (firebaseUser) {
-          user.value.firstName = firebaseUser.displayName;
+          user.value.displayName = firebaseUser.displayName;
           user.value.email = firebaseUser.email;
           isLoggedIn.value = true;
         } else {
