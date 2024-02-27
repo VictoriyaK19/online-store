@@ -1,10 +1,14 @@
 <template>
   <div class="background">
     <div class="store">
-      <div class="product" v-for="product in products" :key="product.productId">
+      <div class="product" :class="{ 'loading': !product.imageLoaded }" v-for="product in products" :key="product.productId">
+        <div v-if="!product.imageLoaded" class="loading-overlay">
+          Loading...
+        </div>
         <img
           :src="require(`@/assets/products/${product.image}`)"
           :alt="product.name"
+          @load="product.imageLoaded = true"
         />
         <h3 class="product-name">{{ product.name }}</h3>
         <p class="product-price">{{ product.price }}</p>
@@ -31,6 +35,11 @@ export default {
     addToCart(product) {
       this.$store.commit('addToCart', product);
     }
+  },
+  mounted() {
+    this.products.forEach(product => {
+      product.imageLoaded = false;
+    });
   }
 };
 </script>
