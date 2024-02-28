@@ -6,8 +6,9 @@
           <img src="https://i.gifer.com/ZKZg.gif" />
         </div>
         <img
-        :src="require(`@/assets/products/${product.image}`)"
-         @load="product.imageLoaded = true" />
+          :src="require(`@/assets/products/${product.image}`)"
+          @load="product.imageLoaded = true"
+        />
         <h3 class="product-name">{{ product.name }}</h3>
         <p class="product-price">{{ product.price }}</p>
         <router-link class="view-details-link" :to="'/store/' + product.id">
@@ -117,7 +118,9 @@ p {
 }
 
 .loading-gif {
-  margin: 1rem auto;
+  padding-top: 1rem;
+  margin: 0 auto;
+  min-height: 194px;
   max-width: 70%;
   height: auto;
   border-radius: 10px 10px 0 0;
