@@ -1,22 +1,22 @@
 <template>
   <div class="background">
     <div class="store">
-      <div class="product" :class="{ 'loading': !product.imageLoaded }" v-for="product in products" :key="product.productId">
-        <div v-if="!product.imageLoaded" class="loading-overlay">
-          Loading...
+      <div class="product" v-for="product in products" :key="product.productId">
+        <div v-if="!product.imageLoaded" class="loading-gif">
+          <img src="https://i.gifer.com/ZKZg.gif" />
         </div>
         <img
-          :src="require(`@/assets/products/${product.image}`)"
-          :alt="product.name"
-          @load="product.imageLoaded = true"
-        />
+        :src="require(`@/assets/products/${product.image}`)"
+         @load="product.imageLoaded = true" />
         <h3 class="product-name">{{ product.name }}</h3>
         <p class="product-price">{{ product.price }}</p>
         <router-link class="view-details-link" :to="'/store/' + product.id">
           View Details
         </router-link>
-        
-        <button class="add-to-cart-button" @click="addToCart(product)">Add to cart</button>
+
+        <button class="add-to-cart-button" @click="addToCart(product)">
+          Add to cart
+        </button>
       </div>
     </div>
   </div>
@@ -28,19 +28,19 @@ import { products } from "../temp-data";
 export default {
   data() {
     return {
-      products
+      products,
     };
   },
   methods: {
     addToCart(product) {
-      this.$store.commit('addToCart', product);
-    }
+      this.$store.commit("addToCart", product);
+    },
   },
   mounted() {
-    this.products.forEach(product => {
+    this.products.forEach((product) => {
       product.imageLoaded = false;
     });
-  }
+  },
 };
 </script>
 
@@ -54,7 +54,7 @@ export default {
 .product {
   margin: 1rem;
   padding: 1rem;
-  flex: 1 1 200px; 
+  flex: 1 1 200px;
   text-align: center;
   max-width: 230px;
   border-radius: 10px;
@@ -82,7 +82,6 @@ p {
   margin: 0;
   font-size: 16px;
   padding-bottom: 0.5rem;
-
 }
 .view-details-link {
   color: #004aad;
@@ -111,5 +110,16 @@ p {
 
 .add-to-cart-button:hover {
   background-color: #002b72;
+}
+
+.loading-overlay {
+  position: relative;
+}
+
+.loading-gif {
+  margin: 1rem auto;
+  max-width: 70%;
+  height: auto;
+  border-radius: 10px 10px 0 0;
 }
 </style>
