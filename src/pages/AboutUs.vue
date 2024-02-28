@@ -105,6 +105,7 @@
     padding: 0.5vw;
     max-width: 100%;
     text-align: center; 
+    margin-bottom: 1.5rem;
 
   }
   p {
