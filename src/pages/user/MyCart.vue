@@ -2,12 +2,12 @@
   <div class="cart-container">
     <h1>Shopping Cart</h1>
     <div
-      v-if="$store.state.cart && $store.state.cart.length > 0"
+      v-if="$store.state.cart.products && $store.state.cart.products.length > 0"
       class="cart-items"
     >
       <div
         class="product"
-        v-for="product in $store.state.cart"
+        v-for="product in $store.state.cart.products"
         :key="product.id"
       >
         <img
@@ -38,13 +38,17 @@
 </template>
 
 <script>
+
+
 export default {
   computed: {
     totalCart() {
       return this.$store.getters.totalCart;
     },
   },
+
   methods: {
+
     addToCart(product) {
       this.$store.commit("addToCart", product);
     },
