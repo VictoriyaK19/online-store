@@ -1,46 +1,65 @@
 <template>
   <div class="cart-container">
     <h1>Shopping Cart</h1>
-    <div
-      v-if="$store.state.cart.products && $store.state.cart.products.length > 0"
-      class="cart-items"
-    >
+    <div v-if="isUserLoggedIn">
       <div
-        class="product"
-        v-for="product in $store.state.cart.products"
-        :key="product.id"
+        v-if="
+          $store.state.cart.products && $store.state.cart.products.length > 0
+        "
+        class="cart-items"
       >
-        <img
-          :src="require(`@/assets/products/${product.image}`)"
-          class="product-image"
-          :alt="product.name"
-        />
-        <div class="product-details">
-          <h3>{{ product.name }}</h3>
-          <p>{{ product.price }}</p>
+        <div
+          class="product"
+          v-for="product in $store.state.cart.products"
+          :key="product.id"
+        >
+          <img
+            :src="require(`@/assets/products/${product.image}`)"
+            class="product-image"
+            :alt="product.name"
+          />
+          <div class="product-details">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.price }}</p>
+          </div>
+          <div class="quantity">
+            <button class="quantity-button" @click="decreaseQuantity(product)">
+              −
+            </button>
+            <span class="quantity-text">{{ product.quantity }}</span>
+            <button class="quantity-button" @click="addToCart(product)">
+              +
+            </button>
+          </div>
+          <button class="remove-button" @click="removeFromCart(product)">
+            X
+          </button>
         </div>
-        <div class="quantity">
-              <button class="quantity-button" @click="decreaseQuantity(product)">−</button>
-              <span class="quantity-text">{{ product.quantity }}</span>
-              <button class="quantity-button" @click="addToCart(product)">+</button>
-            </div>
-        <button class="remove-button" @click="removeFromCart(product)">
-          X
-        </button>
+        <div class="total-cart">Total: {{ totalCart }} $</div>
+        <button class="checkout-button">Proceed to checkout</button>
       </div>
-      <div class="total-cart">Total: {{ totalCart }} $</div>
-      <button class="checkout-button">Proceed to checkout</button>
+      <div v-else>
+        <p class="message">Your cart is currently empty!</p>
+      </div>
     </div>
     <div v-else>
-      <p class="empty-cart-message">Your cart is currently empty!</p>
+      <p class="message">
+        Please first <span><router-link to="/auth">login</router-link></span> to
+        view your cart.
+      </p>
     </div>
   </div>
 </template>
 
 <script>
-
+import { getAuth } from "firebase/auth";
 
 export default {
+  data() {
+    return {
+      isUserLoggedIn: false,
+    };
+  },
   computed: {
     totalCart() {
       return this.$store.getters.totalCart;
@@ -48,7 +67,6 @@ export default {
   },
 
   methods: {
-
     addToCart(product) {
       this.$store.commit("addToCart", product);
     },
@@ -59,6 +77,15 @@ export default {
       this.$store.commit("decreaseQuantity", product);
     },
   },
+  mounted() {
+  let auth = getAuth();
+  if (auth.currentUser) {
+    this.isUserLoggedIn = true;
+  }
+  else {
+    this.isUserLoggedIn = false;
+  }
+}
 };
 </script>
 
@@ -151,13 +178,18 @@ h1 {
   background-color: #0056b3;
 }
 
-.empty-cart-message {
+.message {
   font-size: 1.2rem;
   text-align: center;
   margin-top: 20px;
   color: #fff;
   min-height: 50vh;
   margin-top: 3rem;
+}
+span a {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
 }
 .quantity {
   display: flex;
@@ -182,7 +214,7 @@ h1 {
 }
 
 .quantity-text {
-  margin: 0 5px; 
+  margin: 0 5px;
   font-size: 1.2rem;
 }
 
@@ -192,8 +224,7 @@ h1 {
     padding-left: 1vw;
   }
   .quantity {
-  flex-direction: column;
-}
-
+    flex-direction: column;
+  }
 }
 </style>
