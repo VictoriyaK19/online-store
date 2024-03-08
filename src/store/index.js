@@ -16,6 +16,9 @@ const store = createStore({
         state.cart.id = userId;
       }
     },
+    clearCart(state) {
+      state.cart.products = []
+    },
     addToCart(state, product) {
       const existingProduct = state.cart.products.find(
         (p) => p.id === product.id
@@ -51,7 +54,7 @@ const store = createStore({
       );
 
       const userId = state.cart.id;
-      const databaseUrl = `https://online-store-70f91-default-rtdb.europe-west1.firebasedatabase.app/carts/${userId}/products.json`;  
+      const databaseUrl = `https://online-store-70f91-default-rtdb.europe-west1.firebasedatabase.app/carts/${userId}.json`;  
 
       fetch(databaseUrl, {
         method: 'PUT',
@@ -81,14 +84,14 @@ const store = createStore({
       }
     },
     setCart(state, cartData) {
-      state.cart = cartData;
+      state.cart.products = cartData;
     },
   },
   actions: {
     async fetchCartFromFirebase({ commit, state }) {
-      const userId = state.user ? state.user.uid : null;
+      const userId = state.cart.id;
       if (userId) {
-        const databaseUrl = `https://online-store-70f91-default-rtdb.europe-west1.firebasedatabase.app/carts/${userId}.json`;
+        const databaseUrl = `https://online-store-70f91-default-rtdb.europe-west1.firebasedatabase.app/carts/${userId}/products.json`;
 
         try {
           const response = await fetch(databaseUrl);
