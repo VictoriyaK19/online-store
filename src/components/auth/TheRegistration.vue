@@ -77,8 +77,6 @@ const register = () => {
           console.log("Successfully registered!");
           const userId = user.uid;
           saveUserIdToDatabase(userId);
-          console.log(userId);
-          console.log(getAuth().currentUser);
           router.push("/store");
         })
         .catch((error) => {
