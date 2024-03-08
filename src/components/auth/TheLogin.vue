@@ -77,31 +77,31 @@ const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result) => {
-      const userId = result.user.uid;
-      saveUserIdToDatabase(userId);
+       const userId = result.user.uid;
+       console.log(userId)
+      // saveUserIdToDatabase(userId);
       router.push("/store");
     })
     .catch((error) => {
       console.log(error);
     });
 };
-const saveUserIdToDatabase = (userId) => {
+// const saveUserIdToDatabase = (userId) => {
  
- const databaseUrl = `https://online-store-70f91-default-rtdb.europe-west1.firebasedatabase.app/carts/${userId}.json`;
+//  const databaseUrl = `https://online-store-70f91-default-rtdb.europe-west1.firebasedatabase.app/carts/${userId}.json`;
  
-
- fetch(databaseUrl, {
-   method: 'PUT',
-   body: JSON.stringify(userId),
- })
- .then(response => {
-   if (!response.ok) {
-     throw new Error('Failed to save user ID to database');
-   }
-   console.log('User ID saved to database successfully');
- })
- .catch(error => {
-   console.error('Error saving user ID to database:', error);
- });
-};
+//  fetch(databaseUrl, {
+//    method: 'PUT',
+//    body: JSON.stringify(userId),
+//  })
+//  .then(response => {
+//    if (!response.ok) {
+//      throw new Error('Failed to save user ID to database');
+//    }
+//    console.log('User ID saved to database successfully');
+//  })
+//  .catch(error => {
+//    console.error('Error saving user ID to database:', error);
+//  });
+// };
 </script>

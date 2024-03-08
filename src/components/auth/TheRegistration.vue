@@ -75,8 +75,8 @@ const register = () => {
       updateProfile(user, { displayName })
         .then(() => {
           console.log("Successfully registered!");
-          const userId = user.uid;
-          saveUserIdToDatabase(userId);
+          // const userId = user.uid;
+          // saveUserIdToDatabase(userId);
           router.push("/store");
         })
         .catch((error) => {
@@ -95,8 +95,8 @@ const signInWithGoogle = () => {
     .then((result) => {
       console.log(result.user);
 
-      const userId = result.user.uid;
-      saveUserIdToDatabase(userId);
+      // const userId = result.user.uid;
+      // saveUserIdToDatabase(userId);
 
       router.push("/store");
     })
@@ -105,23 +105,23 @@ const signInWithGoogle = () => {
     });
 };
 
-const saveUserIdToDatabase = (userId) => {
+// const saveUserIdToDatabase = (userId) => {
  
-  const databaseUrl = `https://online-store-70f91-default-rtdb.europe-west1.firebasedatabase.app/carts/${userId}.json`;
+//   const databaseUrl = `https://online-store-70f91-default-rtdb.europe-west1.firebasedatabase.app/carts/${userId}.json`;
   
 
-  fetch(databaseUrl, {
-    method: 'PUT',
-    body: JSON.stringify({ userId }),
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Failed to save user ID to database');
-    }
-    console.log('User ID saved to database successfully');
-  })
-  .catch(error => {
-    console.error('Error saving user ID to database:', error);
-  });
-};
+//   fetch(databaseUrl, {
+//     method: 'PUT',
+//     body: JSON.stringify({ userId }),
+//   })
+//   .then(response => {
+//     if (!response.ok) {
+//       throw new Error('Failed to save user ID to database');
+//     }
+//     console.log('User ID saved to database successfully');
+//   })
+//   .catch(error => {
+//     console.error('Error saving user ID to database:', error);
+//   });
+// };
 </script>
