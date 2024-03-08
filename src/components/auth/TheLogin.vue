@@ -77,7 +77,6 @@ const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result) => {
-      console.log(result.user);
       const userId = result.user.uid;
       saveUserIdToDatabase(userId);
       router.push("/store");
@@ -93,7 +92,7 @@ const saveUserIdToDatabase = (userId) => {
 
  fetch(databaseUrl, {
    method: 'PUT',
-   body: JSON.stringify({ userId }),
+   body: JSON.stringify(userId),
  })
  .then(response => {
    if (!response.ok) {

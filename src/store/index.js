@@ -1,45 +1,84 @@
 import { createStore } from "vuex";
-import firebase from 'firebase/app';
-import 'firebase/database';
 
 const store = createStore({
   state() {
     return {
-      user: null,
-      cart: { 
+      cart: {
         id: null,
-        products: [] 
+        products: [],
       },
     };
   },
   mutations: {
-    setUser(state, user) {
-      state.user = user;
-      if(user) {
-        state.cart.id = user.uid;
+    setUser(state, userId) {
+      console.log(userId);
+      if (userId) {
+        state.cart.id = userId;
       }
     },
     addToCart(state, product) {
-      const existingProduct = state.cart.products.find((p) => p.id === product.id);
+      const existingProduct = state.cart.products.find(
+        (p) => p.id === product.id
+      );
       if (existingProduct) {
         existingProduct.quantity++;
       } else {
         state.cart.products.push({ ...product, quantity: 1 });
       }
-      firebase.database().ref(`carts/${state.user.uid}`).set(state.cart);
+
+      const userId = state.cart.id;
+
+      const databaseUrl = `https://online-store-70f91-default-rtdb.europe-west1.firebasedatabase.app/carts/${userId}/products.json`;
+      console.log(userId);
+      fetch(databaseUrl, {
+        method: "PUT",
+        body: JSON.stringify(state.cart.products),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to update cart in the database");
+          }
+          console.log("Cart updated in the database successfully");
+        })
+        .catch((error) => {
+          console.error("Error updating cart in the database:", error);
+        });
     },
+
     removeFromCart(state, product) {
-      state.cart.products = state.cart.products.filter((p) => p.id !== product.id);
-      firebase.database().ref(`carts/${state.user.uid}`).set(state.cart);
+      state.cart.products = state.cart.products.filter(
+        (p) => p.id !== product.id
+      );
+
+      const userId = state.cart.id;
+      const databaseUrl = `https://online-store-70f91-default-rtdb.europe-west1.firebasedatabase.app/carts/${userId}/products.json`;  
+
+      fetch(databaseUrl, {
+        method: 'PUT',
+        body: JSON.stringify(state.cart.products),
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to update cart in the database');
+          }
+          console.log('Cart updated in the database successfully');
+        })
+        .catch(error => {
+          console.error('Error updating cart in the database:', error);
+        });
+    
     },
     decreaseQuantity(state, product) {
-      const existingProduct = state.cart.products.find((p) => p.id === product.id);
+      const existingProduct = state.cart.products.find(
+        (p) => p.id === product.id
+      );
       if (existingProduct.quantity === 1) {
-        state.cart.products = state.cart.products.filter((p) => p.id !== product.id);
+        state.cart.products = state.cart.products.filter(
+          (p) => p.id !== product.id
+        );
       } else {
         existingProduct.quantity--;
       }
-      firebase.database().ref(`carts/${state.user.uid}`).set(state.cart);
     },
     setCart(state, cartData) {
       state.cart = cartData;
@@ -49,16 +88,23 @@ const store = createStore({
     async fetchCartFromFirebase({ commit, state }) {
       const userId = state.user ? state.user.uid : null;
       if (userId) {
-        firebase.database().ref(`carts/${userId}`).once('value')
-          .then(snapshot => {
-            const cartData = snapshot.val();
-            if (cartData) {
-              commit('setCart', cartData);
-            }
-          })
-          .catch(error => {
-            console.error('Error fetching cart from Firebase:', error);
-          });
+        const databaseUrl = `https://online-store-70f91-default-rtdb.europe-west1.firebasedatabase.app/carts/${userId}.json`;
+
+        try {
+          const response = await fetch(databaseUrl);
+
+          if (!response.ok) {
+            throw new Error("Failed to fetch cart from Firebase");
+          }
+
+          const cartData = await response.json();
+          if (cartData) {
+            commit("setCart", cartData);
+            console.log("successfully");
+          }
+        } catch (error) {
+          console.error("Error fetching cart from Firebase:", error);
+        }
       }
     },
   },

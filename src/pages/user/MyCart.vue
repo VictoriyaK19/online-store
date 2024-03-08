@@ -81,9 +81,11 @@ export default {
   let auth = getAuth();
   if (auth.currentUser) {
     this.isUserLoggedIn = true;
+    this.$store.dispatch('fetchCartFromFirebase');
   }
   else {
     this.isUserLoggedIn = false;
+    this.$store.commit('clearCart');
   }
 }
 };

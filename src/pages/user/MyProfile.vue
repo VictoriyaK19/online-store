@@ -25,6 +25,7 @@
 </template>
 
 <script setup>
+import store from "@/store";
 import TheAuth from "../TheAuth.vue";
 import { onMounted, ref } from "vue";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
@@ -60,9 +61,11 @@ import { useRouter } from "vue-router";
           user.value.displayName = firebaseUser.displayName;
           user.value.email = firebaseUser.email;
           isLoggedIn.value = true;
+          store.commit('setUser', firebaseUser.uid);
         } else {
           isLoggedIn.value = false;
           console.log("User is signed out");
+          store.commit('setUser', null);
         }
       });
     });
