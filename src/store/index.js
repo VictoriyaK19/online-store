@@ -11,7 +11,6 @@ const store = createStore({
   },
   mutations: {
     setUser(state, userId) {
-      console.log(userId);
       if (userId) {
         state.cart.id = userId;
       }
@@ -82,6 +81,22 @@ const store = createStore({
       } else {
         existingProduct.quantity--;
       }
+      const userId = state.cart.id;
+    const databaseUrl = `https://online-store-70f91-default-rtdb.europe-west1.firebasedatabase.app/carts/${userId}/products.json`;  
+
+    fetch(databaseUrl, {
+      method: 'PUT',
+      body: JSON.stringify(state.cart.products),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to update cart in the database');
+        }
+        console.log('Cart updated in the database successfully');
+      })
+      .catch(error => {
+        console.error('Error updating cart in the database:', error);
+      });
     },
     setCart(state, cartData) {
       state.cart.products = cartData;

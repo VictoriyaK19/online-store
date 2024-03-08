@@ -58,7 +58,6 @@ export default {
   data() {
     return {
       isUserLoggedIn: false,
-      isCartLoaded: false 
     };
   },
   computed: {
@@ -77,26 +76,18 @@ export default {
     decreaseQuantity(product) {
       this.$store.commit("decreaseQuantity", product);
     },
-    async fetchCartData() {
-      try {
-        await this.$store.dispatch('fetchCartFromFirebase');
-        this.isUserLoggedIn = true;
-      } catch (error) {
-        console.error('Error fetching cart data:', error);
-        this.isUserLoggedIn = false;
-        this.$store.commit('clearCart');
-      }
-    },
   },
-  mounted() { 
+
+  mounted() {
     let auth = getAuth();
     if (auth.currentUser) {
-      this.fetchCartData();
+      this.isUserLoggedIn = true;
+      this.$store.dispatch('fetchCartFromFirebase');
     } else {
       this.isUserLoggedIn = false;
       this.$store.commit('clearCart');
     }
-  }
+  },
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isLoggedIn" class="background my-profile ">
+  <div v-if="isLoggedIn" class="background my-profile">
     <h2>My Profile</h2>
     <div class="profile-info">
       <div class="details">
@@ -31,57 +31,53 @@ import { onMounted, ref } from "vue";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "vue-router";
 
-    const router = useRouter();
+const router = useRouter();
 
-    const user = ref({
-      displayName: "",
-      email: "",
-    });
+const user = ref({
+  displayName: "",
+  email: "",
+});
 
-    const orders = [
-      {
-        id: 1,
-        date: "2024-02-18",
-        total: 50.0,
-      },
-      {
-        id: 2,
-        date: "2024-02-16",
-        total: 75.0,
-      },
-    ];
+const orders = [
+  {
+    id: 1,
+    date: "2024-02-18",
+    total: 50.0,
+  },
+  {
+    id: 2,
+    date: "2024-02-16",
+    total: 75.0,
+  },
+];
 
-    const isLoggedIn = ref(false);
+const isLoggedIn = ref(false);
 
-    let auth;
-    onMounted(() => {
-       auth = getAuth();
-      onAuthStateChanged(auth, (firebaseUser) => {
-        if (firebaseUser) {
-          user.value.displayName = firebaseUser.displayName;
-          user.value.email = firebaseUser.email;
-          isLoggedIn.value = true;
-          store.commit('setUser', firebaseUser.uid);
-        } else {
-          isLoggedIn.value = false;
-          console.log("User is signed out");
-          store.commit('setUser', null);
-        }
-      });
-    });
+let auth;
+onMounted(() => {
+  auth = getAuth();
+  onAuthStateChanged(auth, (firebaseUser) => {
+    if (firebaseUser) {
+      user.value.displayName = firebaseUser.displayName;
+      user.value.email = firebaseUser.email;
+      isLoggedIn.value = true;
+      store.commit("setUser", firebaseUser.uid);
+    } else {
+      isLoggedIn.value = false;
+      console.log("User is signed out");
+      store.commit("setUser", null);
+    }
+  });
+});
 
-    const handleLogOut = async () => {
+const handleLogOut = async () => {
   try {
     await signOut(auth);
     router.push("/");
   } catch (error) {
     console.error("Error signing out:", error.message);
   }
-    };
-
-
-
-
+};
 </script>
 
 <style scoped>
@@ -109,7 +105,7 @@ import { useRouter } from "vue-router";
   border-bottom: none;
 }
 .my-profile button {
-  background-color: #de4050; 
+  background-color: #de4050;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -119,6 +115,6 @@ import { useRouter } from "vue-router";
 }
 
 .my-profile button:hover {
-  background-color: #c82333; 
+  background-color: #c82333;
 }
 </style>
