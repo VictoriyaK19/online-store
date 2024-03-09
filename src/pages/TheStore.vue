@@ -47,10 +47,12 @@ export default {
     try {
       this.$store.commit("addToCart", product);
 
+      clearTimeout(this.timer);
+
       this.addedToCart = true;
       this.addedToCartProduct = product;
 
-      setTimeout(() => {
+      this.timer = setTimeout(() => {
         window.requestAnimationFrame(() => {
           this.addedToCart = false;
           this.addedToCartProduct = null;
