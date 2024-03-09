@@ -15,9 +15,7 @@
       </p>
       <section class="buttons">
         <button class="button1" @click="orderNow">Order Now</button>
-        <button class="button2" @click="learnMore" @mouseover="isHovered = true" @mouseleave="isHovered = false">
-          Learn More
-        </button>
+        <button class="button2" @click="learnMore">Learn More</button>
       </section>
     </section>
   </div>
@@ -25,19 +23,14 @@
 
 <script>
 export default {
-  data() {
-    return {
-      isHovered: false
-    };
-  },
   methods: {
     orderNow() {
-      this.$router.push('/store');
+      this.$router.push("/store");
     },
     learnMore() {
-      this.$router.push('/aboutus');
-    }
-  }
+      this.$router.push("/aboutus");
+    },
+  },
 };
 </script>
 
@@ -123,6 +116,7 @@ button.button1:hover {
 button.button2:hover {
   background-color: #935dd5;
   border: 2px solid #935dd5;
+  color: white;
 }
 
 @media screen and (max-width: 722px) {
