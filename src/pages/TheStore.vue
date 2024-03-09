@@ -20,17 +20,24 @@
         </button>
       </div>
     </div>
+    <ProductAddedMessage v-if="addedToCart" :product="addedToCartProduct" />
   </div>
 </template>
 
 <script>
 import { products } from "../temp-data";
+import ProductAddedMessage from "@/components/messages/ProductAddedMessage.vue";
 
 export default {
   data() {
     return {
       products,
-    };
+      addedToCart: false,
+      addedToCartProduct: null
+    }
+  },
+  components: {
+    ProductAddedMessage
   },
   methods: {
     addToCart(product) {
@@ -42,6 +49,23 @@ export default {
       product.imageLoaded = false;
     });
   },
+  async addToCart(product) {
+      try {
+        // Your logic to add the product to Firebase
+        // Example with Firebase:
+        // await firebase.firestore().collection('cart').add(product);
+        this.$store.commit("addToCart", product);
+        this.addedToCart = true;
+        this.addedToCartProduct = product;
+        setTimeout(() => {
+          this.addedToCart = false;
+          this.addedToCartProduct = null;
+        }, 5000); // Hide after 5 seconds, adjust as needed
+      } catch (error) {
+        console.error("Error adding product to cart:", error);
+        // Handle error if necessary
+      }
+    }
 };
 </script>
 

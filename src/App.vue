@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import TheHeader from "./components/layout/TheHeader.vue";
 import TheFooter from '@/components/layout/TheFooter.vue';
 
@@ -13,6 +14,17 @@ export default {
   components: {
     "the-header": TheHeader,
     "the-footer": TheFooter,
+  },
+  beforeMount() {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.$store.commit("setUser", user.uid)
+        this.$store.dispatch('fetchCartFromFirebase');
+      } else {
+        this.$store.commit('clearCart');
+      }
+    });
   },
 };
 </script>
