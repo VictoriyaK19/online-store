@@ -20,7 +20,10 @@
         </button>
       </div>
     </div>
-    <ProductAddedMessage v-if="addedToCart" :product="addedToCartProduct" />
+    <product-added-message
+      v-if="addedToCart"
+      :product="addedToCartProduct"
+    ></product-added-message>
   </div>
 </template>
 
@@ -33,39 +36,38 @@ export default {
     return {
       products,
       addedToCart: false,
-      addedToCartProduct: null
-    }
+      addedToCartProduct: null,
+    };
   },
   components: {
-    ProductAddedMessage
+    ProductAddedMessage,
   },
   methods: {
-    addToCart(product) {
+    async addToCart(product) {
+    try {
       this.$store.commit("addToCart", product);
-    },
+
+      this.addedToCart = true;
+      this.addedToCartProduct = product;
+
+      setTimeout(() => {
+        window.requestAnimationFrame(() => {
+          this.addedToCart = false;
+          this.addedToCartProduct = null;
+        });
+      }, 2000);
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+
+    }
+  },
   },
   mounted() {
     this.products.forEach((product) => {
       product.imageLoaded = false;
     });
   },
-  async addToCart(product) {
-      try {
-        // Your logic to add the product to Firebase
-        // Example with Firebase:
-        // await firebase.firestore().collection('cart').add(product);
-        this.$store.commit("addToCart", product);
-        this.addedToCart = true;
-        this.addedToCartProduct = product;
-        setTimeout(() => {
-          this.addedToCart = false;
-          this.addedToCartProduct = null;
-        }, 5000); // Hide after 5 seconds, adjust as needed
-      } catch (error) {
-        console.error("Error adding product to cart:", error);
-        // Handle error if necessary
-      }
-    }
+  
 };
 </script>
 

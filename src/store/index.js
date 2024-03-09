@@ -31,7 +31,7 @@ const store = createStore({
       const userId = state.cart.id;
 
       const databaseUrl = `https://online-store-70f91-default-rtdb.europe-west1.firebasedatabase.app/carts/${userId}/products.json`;
-      console.log(userId);
+
       fetch(databaseUrl, {
         method: "PUT",
         body: JSON.stringify(state.cart.products),
@@ -40,7 +40,7 @@ const store = createStore({
           if (!response.ok) {
             throw new Error("Failed to update cart in the database");
           }
-          console.log("Cart updated in the database successfully");
+      
         })
         .catch((error) => {
           console.error("Error updating cart in the database:", error);
@@ -63,7 +63,7 @@ const store = createStore({
           if (!response.ok) {
             throw new Error('Failed to update cart in the database');
           }
-          console.log('Cart updated in the database successfully');
+          
         })
         .catch(error => {
           console.error('Error updating cart in the database:', error);
@@ -92,7 +92,7 @@ const store = createStore({
         if (!response.ok) {
           throw new Error('Failed to update cart in the database');
         }
-        console.log('Cart updated in the database successfully');
+       
       })
       .catch(error => {
         console.error('Error updating cart in the database:', error);
@@ -118,7 +118,7 @@ const store = createStore({
           const cartData = await response.json();
           if (cartData) {
             commit("setCart", cartData);
-            console.log("successfully");
+
           }
         } catch (error) {
           console.error("Error fetching cart from Firebase:", error);

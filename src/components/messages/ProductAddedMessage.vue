@@ -1,36 +1,41 @@
 <template>
-    <div v-if="show" class="product-added-message">
-      <img :src="product.image" class="product-image" :alt="product.name" />
-      <p>{{ message }}</p>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      show: Boolean,
-      message: String,
-      product: Object
+  <div class="added-to-cart">
+    <img :src="require(`@/assets/products/${product.image}`)" :alt="product.name"/>
+    <p>{{ product.name }} has been added to your cart!</p>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    product: {
+      type: Object,
+      required: true
     }
-  };
-  </script>
-  
-  <style scoped>
-.product-added-message {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  },
+};
+</script>
+
+<style scoped>
+
+.added-to-cart {
+  position: fixed;
+  bottom: 20px; 
+  right: 20px; 
+  background-color: white;
   padding: 10px;
-  display: flex;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  display: flex; 
   align-items: center;
 }
-
-.product-image {
+.added-to-cart img {
   width: 50px;
   height: 50px;
   margin-right: 10px;
 }
-  </style>
+.added-to-cart p {
+  display: inline-block; 
+  margin: 0;
+}
+</style>
