@@ -83,11 +83,8 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.isUserLoggedIn = true;
-        this.$store.commit("setUser", user.uid)
-        this.$store.dispatch('fetchCartFromFirebase');
       } else {
         this.isUserLoggedIn = false;
-        this.$store.commit('clearCart');
       }
     });
   },

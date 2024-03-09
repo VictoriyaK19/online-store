@@ -7,7 +7,7 @@
 <script>
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import TheHeader from "./components/layout/TheHeader.vue";
-import TheFooter from '@/components/layout/TheFooter.vue';
+import TheFooter from "@/components/layout/TheFooter.vue";
 
 export default {
   name: "App",
@@ -19,10 +19,10 @@ export default {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        this.$store.commit("setUser", user.uid)
-        this.$store.dispatch('fetchCartFromFirebase');
+        this.$store.commit("setUser", user.uid);
+        this.$store.dispatch("fetchCartFromFirebase");
       } else {
-        this.$store.commit('clearCart');
+        this.$store.commit("clearCart");
       }
     });
   },
