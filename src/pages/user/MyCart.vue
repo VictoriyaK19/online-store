@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
   data() {
@@ -78,15 +78,18 @@ export default {
     },
   },
 
-  mounted() {
-    let auth = getAuth();
-    if (auth.currentUser) {
-      this.isUserLoggedIn = true;
-      this.$store.dispatch('fetchCartFromFirebase');
-    } else {
-      this.isUserLoggedIn = false;
-      this.$store.commit('clearCart');
-    }
+  beforeMount() {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.isUserLoggedIn = true;
+        this.$store.commit("setUser", user.uid)
+        this.$store.dispatch('fetchCartFromFirebase');
+      } else {
+        this.isUserLoggedIn = false;
+        this.$store.commit('clearCart');
+      }
+    });
   },
 };
 </script>
