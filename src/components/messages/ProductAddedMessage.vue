@@ -17,7 +17,6 @@ export default {
 </script>
 
 <style scoped>
-
 .added-to-cart {
   position: fixed;
   bottom: 20px; 
@@ -32,10 +31,22 @@ export default {
 .added-to-cart img {
   width: 50px;
   height: 50px;
-  margin-right: 10px;
+  margin-right: 10px; 
 }
 .added-to-cart p {
-  display: inline-block; 
+  padding: 0;
   margin: 0;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .added-to-cart img {
+    width: 3rem;
+    height: 3rem; 
+  }
+
+  .added-to-cart p {
+    font-size: 12px; 
+  }
 }
 </style>
