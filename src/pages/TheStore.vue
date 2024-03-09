@@ -1,7 +1,15 @@
 <template>
   <div class="background">
+    <div class="search-bar">
+      <input
+        type="text"
+        v-model="searchQuery"
+        placeholder="Search products..."
+        class="search-input"
+      />
+    </div>
     <div class="store">
-      <div class="product" v-for="product in products" :key="product.productId">
+      <div class="product" v-for="product in filteredProducts" :key="product.productId">
         <div v-if="!product.imageLoaded" class="loading-gif">
           <img src="https://i.gifer.com/ZKZg.gif" />
         </div>
@@ -18,6 +26,9 @@
         <button class="add-to-cart-button" @click="addToCart(product)">
           Add to cart
         </button>
+      </div>
+      <div v-if="!filteredProducts.length && searchQuery" class="no-results">
+        No results found.
       </div>
     </div>
     <product-added-message
@@ -37,6 +48,7 @@ export default {
       products,
       addedToCart: false,
       addedToCartProduct: null,
+      searchQuery: ''
     };
   },
   components: {
@@ -44,32 +56,37 @@ export default {
   },
   methods: {
     async addToCart(product) {
-    try {
-      this.$store.commit("addToCart", product);
+      try {
+        this.$store.commit("addToCart", product);
 
-      clearTimeout(this.timer);
+        clearTimeout(this.timer);
 
-      this.addedToCart = true;
-      this.addedToCartProduct = product;
+        this.addedToCart = true;
+        this.addedToCartProduct = product;
 
-      this.timer = setTimeout(() => {
-        window.requestAnimationFrame(() => {
-          this.addedToCart = false;
-          this.addedToCartProduct = null;
-        });
-      }, 2000);
-    } catch (error) {
-      console.error("Error adding product to cart:", error);
-
-    }
+        this.timer = setTimeout(() => {
+          window.requestAnimationFrame(() => {
+            this.addedToCart = false;
+            this.addedToCartProduct = null;
+          });
+        }, 2000);
+      } catch (error) {
+        console.error("Error adding product to cart:", error);
+      }
+    },
   },
+  computed: {
+    filteredProducts() {
+      return this.products.filter(product =>
+        product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
   },
   mounted() {
     this.products.forEach((product) => {
       product.imageLoaded = false;
     });
   },
-  
 };
 </script>
 
@@ -152,5 +169,29 @@ p {
   max-width: 70%;
   height: auto;
   border-radius: 10px 10px 0 0;
+}
+
+
+.search-bar {
+  margin: 2rem auto ;
+  max-width: 30rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #002b72;
 }
 </style>
