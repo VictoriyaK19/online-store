@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import router from "@/router";
 
 const store = createStore({
   state() {
@@ -19,6 +20,10 @@ const store = createStore({
       state.cart.products = []
     },
     addToCart(state, product) {
+      if (!state.cart.id) {
+        router.push('/auth');
+        return;
+      }
       const existingProduct = state.cart.products.find(
         (p) => p.id === product.id
       );
