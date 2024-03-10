@@ -20,7 +20,7 @@
           />
           <div class="product-details">
             <h3>{{ product.name }}</h3>
-            <p>{{ product.price }}</p>
+            <p>{{     formattedPrice(product.price) }}</p>
           </div>
           <div class="quantity">
             <button class="quantity-button" @click="decreaseQuantity(product)">
@@ -75,6 +75,12 @@ export default {
     },
     decreaseQuantity(product) {
       this.$store.commit("decreaseQuantity", product);
+    },
+    formattedPrice(price) {
+      const formattedPrice = parseFloat(price).toFixed(2);
+      const [integerPart, decimalPart] = formattedPrice.split(".");
+      const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      return formattedIntegerPart + ", " + decimalPart + " $";
     },
   },
 

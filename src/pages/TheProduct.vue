@@ -9,7 +9,7 @@
       </div>
       <div class="product-details">
         <h1>{{ product.name }}</h1>
-        <h3 class="price">{{ product.price }}</h3>
+        <h3 class="price">{{ formattedPrice(product.price) }}</h3>
         <button class="add-to-cart" @click="addToCart(product)">Add to Cart</button>
       </div>
     </div>
@@ -37,7 +37,13 @@ export default {
   methods: {
     addToCart(product) {
       this.$store.commit('addToCart', product);
-    }
+    },
+    formattedPrice(price) {
+      const formattedPrice = parseFloat(price).toFixed(2);
+      const [integerPart, decimalPart] = formattedPrice.split(".");
+      const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      return formattedIntegerPart + ", " + decimalPart + " $";
+    },
   }
 };
 </script>

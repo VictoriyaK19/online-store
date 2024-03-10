@@ -9,7 +9,11 @@
       />
     </div>
     <div class="store">
-      <div class="product" v-for="product in filteredProducts" :key="product.productId">
+      <div
+        class="product"
+        v-for="product in filteredProducts"
+        :key="product.productId"
+      >
         <div v-if="!product.imageLoaded" class="loading-gif">
           <img src="https://i.gifer.com/ZKZg.gif" />
         </div>
@@ -18,7 +22,7 @@
           @load="product.imageLoaded = true"
         />
         <h3 class="product-name">{{ product.name }}</h3>
-        <p class="product-price">{{ product.price }}</p>
+        <p class="product-price">{{ formattedPrice(product.price) }}</p>
         <router-link class="view-details-link" :to="'/store/' + product.id">
           View Details
         </router-link>
@@ -48,7 +52,7 @@ export default {
       products,
       addedToCart: false,
       addedToCartProduct: null,
-      searchQuery: ''
+      searchQuery: "",
     };
   },
   components: {
@@ -74,13 +78,19 @@ export default {
         console.error("Error adding product to cart:", error);
       }
     },
+    formattedPrice(price) {
+      const formattedPrice = parseFloat(price).toFixed(2);
+      const [integerPart, decimalPart] = formattedPrice.split(".");
+      const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      return formattedIntegerPart + ", " + decimalPart + " $";
+    },
   },
   computed: {
     filteredProducts() {
-      return this.products.filter(product =>
+      return this.products.filter((product) =>
         product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
-    }
+    },
   },
   mounted() {
     this.products.forEach((product) => {
@@ -171,9 +181,8 @@ p {
   border-radius: 10px 10px 0 0;
 }
 
-
 .search-bar {
-  margin: 2rem auto ;
+  margin: 2rem auto;
   max-width: 30rem;
 }
 
