@@ -1,9 +1,9 @@
 <template>
   <div class="background">
     <div class="images">
-      <img src="../assets/about_us/tech.jpg" alt="" />
-      <img src="../assets/about_us/tech2.jpg" alt="" />
-      <img src="../assets/about_us/tech3.jpg" alt="" />
+      <img :src="techImage1" alt="" />
+      <img :src="techImage2" alt="" />
+      <img :src="techImage3" alt="" />
     </div>
     <div class="content">
       <p>
@@ -36,6 +36,18 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      techImage1: require("../assets/about_us/tech.jpg"),
+      techImage2: require("../assets/about_us/tech2.jpg"),
+      techImage3: require("../assets/about_us/tech3.jpg")
+    };
+  }
+};
+</script>
 
 <style scoped>
   .background {
