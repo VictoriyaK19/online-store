@@ -17,7 +17,8 @@ const store = createStore({
       }
     },
     clearCart(state) {
-      state.cart.products = []
+      state.cart.id = null;
+      state.cart.products = [];
     },
     addToCart(state, product) {
       if (!state.cart.id) {
