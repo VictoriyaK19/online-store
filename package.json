@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "babel-node scripts/gh-pages.js"
+    "deploy": "node scripts/gh-pages.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -26,6 +26,7 @@
     "@babel/cli": "^7.24.7",
     "@babel/core": "^7.24.7",
     "@babel/eslint-parser": "^7.12.16",
+    "@babel/node": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
