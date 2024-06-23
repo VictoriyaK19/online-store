@@ -1,7 +1,13 @@
 // Scripts/gh-pages-deploy.js
 
 /* eslint-disable no-console */
-const execa = require("execa").default || require("execa");
+let execa;
+try {
+  execa = (await import("execa")).default;
+} catch (e) {
+  execa = require("execa");
+}
+
 const fs = require("fs");
 
 (async () => {
