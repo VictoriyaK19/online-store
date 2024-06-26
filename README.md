@@ -1,4 +1,4 @@
-[Live](https://nextjs-test-nine-phi-99.vercel.app/)
+[Live](https://online-store-alpha-six.vercel.app/)
 # online-store
 
 ## Project setup
