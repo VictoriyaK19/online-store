@@ -42,7 +42,7 @@ html {
 
 body {
   background: linear-gradient(0.25turn, #004aad, #cb6ce6) fixed;
-  overflow-x: hidden; /* Prevent horizontal scrollbar */
+  overflow-x: hidden; 
 }
 
 div.background {
@@ -50,9 +50,9 @@ div.background {
   overflow: hidden;
   background-color: white;
   border-radius: 25px;
-  margin: 20px; /* Adjust the margin size as needed */
+  margin: 20px; 
   box-sizing: border-box;
-  width: calc(100% - 40px); /* Subtract twice the margin size from 100% */
+  width: calc(100% - 40px); 
   min-height: 80vh;
 }
 

@@ -20,7 +20,7 @@
           />
           <div class="product-details">
             <h3>{{ product.name }}</h3>
-            <p>{{     formattedPrice(product.price) }}</p>
+            <p>{{formattedPrice(product.price) }}</p>
           </div>
           <div class="quantity">
             <button class="quantity-button" @click="decreaseQuantity(product)">

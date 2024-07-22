@@ -79,7 +79,6 @@ const signInWithGoogle = () => {
     .then((result) => {
        const userId = result.user.uid;
        console.log(userId)
-      // saveUserIdToDatabase(userId);
       router.push("/store");
     })
     .catch((error) => {

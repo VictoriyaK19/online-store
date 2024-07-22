@@ -75,8 +75,6 @@ const register = () => {
       updateProfile(user, { displayName })
         .then(() => {
           console.log("Successfully registered!");
-          // const userId = user.uid;
-          // saveUserIdToDatabase(userId);
           router.push("/store");
         })
         .catch((error) => {
@@ -94,9 +92,6 @@ const signInWithGoogle = () => {
   signInWithPopup(getAuth(), provider)
     .then((result) => {
       console.log(result.user);
-
-      // const userId = result.user.uid;
-      // saveUserIdToDatabase(userId);
 
       router.push("/store");
     })
